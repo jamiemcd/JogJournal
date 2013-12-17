@@ -22,6 +22,16 @@
 		FDC51F5F1860AAA8006B5E77 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F431860AAA8006B5E77 /* CoreData.framework */; };
 		FDC51F671860AAA8006B5E77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDC51F651860AAA8006B5E77 /* InfoPlist.strings */; };
 		FDC51F691860AAA8006B5E77 /* JogJournalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F681860AAA8006B5E77 /* JogJournalTests.m */; };
+		FDC51F731860B444006B5E77 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F721860B444006B5E77 /* Parse.framework */; };
+		FDC51F771860B4A3006B5E77 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F761860B4A3006B5E77 /* AudioToolbox.framework */; };
+		FDC51F791860B4AE006B5E77 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F781860B4AE006B5E77 /* CFNetwork.framework */; };
+		FDC51F7B1860B4BD006B5E77 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F7A1860B4BD006B5E77 /* CoreLocation.framework */; };
+		FDC51F7D1860B4C7006B5E77 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F7C1860B4C7006B5E77 /* libz.1.1.3.dylib */; };
+		FDC51F7F1860B4D1006B5E77 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F7E1860B4D1006B5E77 /* MobileCoreServices.framework */; };
+		FDC51F811860B4DB006B5E77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F801860B4DB006B5E77 /* QuartzCore.framework */; };
+		FDC51F831860B4E4006B5E77 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F821860B4E4006B5E77 /* Security.framework */; };
+		FDC51F851860B4ED006B5E77 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F841860B4ED006B5E77 /* StoreKit.framework */; };
+		FDC51F871860B4F6006B5E77 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F861860B4F6006B5E77 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +63,16 @@
 		FDC51F641860AAA8006B5E77 /* JogJournalTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JogJournalTests-Info.plist"; sourceTree = "<group>"; };
 		FDC51F661860AAA8006B5E77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FDC51F681860AAA8006B5E77 /* JogJournalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JogJournalTests.m; sourceTree = "<group>"; };
+		FDC51F721860B444006B5E77 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		FDC51F761860B4A3006B5E77 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FDC51F781860B4AE006B5E77 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		FDC51F7A1860B4BD006B5E77 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FDC51F7C1860B4C7006B5E77 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		FDC51F7E1860B4D1006B5E77 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		FDC51F801860B4DB006B5E77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FDC51F821860B4E4006B5E77 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FDC51F841860B4ED006B5E77 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FDC51F861860B4F6006B5E77 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +80,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDC51F871860B4F6006B5E77 /* SystemConfiguration.framework in Frameworks */,
+				FDC51F851860B4ED006B5E77 /* StoreKit.framework in Frameworks */,
+				FDC51F831860B4E4006B5E77 /* Security.framework in Frameworks */,
+				FDC51F811860B4DB006B5E77 /* QuartzCore.framework in Frameworks */,
+				FDC51F7F1860B4D1006B5E77 /* MobileCoreServices.framework in Frameworks */,
+				FDC51F7D1860B4C7006B5E77 /* libz.1.1.3.dylib in Frameworks */,
+				FDC51F7B1860B4BD006B5E77 /* CoreLocation.framework in Frameworks */,
+				FDC51F791860B4AE006B5E77 /* CFNetwork.framework in Frameworks */,
+				FDC51F771860B4A3006B5E77 /* AudioToolbox.framework in Frameworks */,
 				FDC51F401860AAA8006B5E77 /* CoreGraphics.framework in Frameworks */,
 				FDC51F441860AAA8006B5E77 /* CoreData.framework in Frameworks */,
 				FDC51F421860AAA8006B5E77 /* UIKit.framework in Frameworks */,
 				FDC51F3E1860AAA8006B5E77 /* Foundation.framework in Frameworks */,
+				FDC51F731860B444006B5E77 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +133,16 @@
 		FDC51F3C1860AAA8006B5E77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FDC51F861860B4F6006B5E77 /* SystemConfiguration.framework */,
+				FDC51F841860B4ED006B5E77 /* StoreKit.framework */,
+				FDC51F821860B4E4006B5E77 /* Security.framework */,
+				FDC51F801860B4DB006B5E77 /* QuartzCore.framework */,
+				FDC51F7E1860B4D1006B5E77 /* MobileCoreServices.framework */,
+				FDC51F7C1860B4C7006B5E77 /* libz.1.1.3.dylib */,
+				FDC51F7A1860B4BD006B5E77 /* CoreLocation.framework */,
+				FDC51F781860B4AE006B5E77 /* CFNetwork.framework */,
+				FDC51F761860B4A3006B5E77 /* AudioToolbox.framework */,
+				FDC51F721860B444006B5E77 /* Parse.framework */,
 				FDC51F3D1860AAA8006B5E77 /* Foundation.framework */,
 				FDC51F3F1860AAA8006B5E77 /* CoreGraphics.framework */,
 				FDC51F411860AAA8006B5E77 /* UIKit.framework */,
@@ -370,6 +410,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/jamiemcd/Documents/Xcode/CuriousFind/JogJournal,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JogJournal/JogJournal-Prefix.pch";
 				INFOPLIST_FILE = "JogJournal/JogJournal-Info.plist";
@@ -383,6 +427,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/jamiemcd/Documents/Xcode/CuriousFind/JogJournal,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JogJournal/JogJournal-Prefix.pch";
 				INFOPLIST_FILE = "JogJournal/JogJournal-Info.plist";
