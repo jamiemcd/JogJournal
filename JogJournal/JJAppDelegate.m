@@ -24,7 +24,8 @@
     [[JJParseManager sharedManager] trackAppOpenedWithLaunchOptions:launchOptions];
     
     JJMainViewController *mainViewController = [[JJMainViewController alloc] init];
-    self.window.rootViewController = mainViewController;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+    self.window.rootViewController = navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

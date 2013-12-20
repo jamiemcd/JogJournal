@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FDC51F391860AAA8006B5E77"
                BuildableName = "JogJournal.app"
-               BlueprintName = "JogJournal"
+               BlueprintName = "Jog Journal"
                ReferencedContainer = "container:JogJournal.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FDC51F391860AAA8006B5E77"
             BuildableName = "JogJournal.app"
-            BlueprintName = "JogJournal"
+            BlueprintName = "Jog Journal"
             ReferencedContainer = "container:JogJournal.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FDC51F391860AAA8006B5E77"
             BuildableName = "JogJournal.app"
-            BlueprintName = "JogJournal"
+            BlueprintName = "Jog Journal"
             ReferencedContainer = "container:JogJournal.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FDC51F391860AAA8006B5E77"
             BuildableName = "JogJournal.app"
-            BlueprintName = "JogJournal"
+            BlueprintName = "Jog Journal"
             ReferencedContainer = "container:JogJournal.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

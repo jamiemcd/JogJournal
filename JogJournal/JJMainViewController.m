@@ -8,6 +8,9 @@
 
 #import "JJMainViewController.h"
 #import "JJWelcomeViewController.h"
+#import "JJActiveJogViewController.h"
+#import "JJCompletedJogsViewController.h"
+#import "JJStatisticsViewController.h"
 #import "JJParseManager.h"
 #import "JJButton.h"
 #import "UIFont+Custom.h"
@@ -16,8 +19,9 @@
 @interface JJMainViewController ()
 
 @property (nonatomic, strong) UIImageView *logoImageView;
-@property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) JJButton *startNewJogButton;
+@property (nonatomic, strong) JJButton *completedJogsButton;
+@property (nonatomic, strong) JJButton *statisticsButton;
 @property (nonatomic, strong) JJButton *logOutButton;
 
 @property (nonatomic, strong) JJWelcomeViewController *welcomeViewController;
@@ -41,6 +45,13 @@
 {
     [super viewDidLoad];
 	[self createUI];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -67,23 +78,6 @@
     self.logoImageView.image = [UIImage imageNamed:@"logo-small"];
     [self.view addSubview:self.logoImageView];
     
-    // titleLabel
-    UIFont *font = [UIFont lightAppFontOfSize:36];
-    UIColor *color = [UIColor blackColor];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.alignment = NSTextAlignmentCenter;
-    
-    NSDictionary *attributes = @{ NSFontAttributeName: font,
-                                  NSForegroundColorAttributeName: color,
-                                  NSParagraphStyleAttributeName: paragraphStyle };
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:@"Jog Journal" attributes:attributes];
-    
-    self.titleLabel = [[UILabel alloc] init];
-    [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.titleLabel.numberOfLines = 0;
-    self.titleLabel.attributedText = attributedString;
-    [self.view addSubview:self.titleLabel];
-    
     // startNewJogButton
     self.startNewJogButton = [[JJButton alloc] init];
     [self.startNewJogButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -92,6 +86,24 @@
     self.startNewJogButton.title = @"Start a New Jog";
     [self.startNewJogButton addTarget:self action:@selector(startNewJogButtonTouchDownHandler:) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:self.startNewJogButton];
+
+    // completedJogsButton
+    self.completedJogsButton = [[JJButton alloc] init];
+    [self.completedJogsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.completedJogsButton.color = [UIColor jogJournalGreen];
+    self.completedJogsButton.image = [UIImage imageNamed:@"journal-logo"];
+    self.completedJogsButton.title = @"View My Completed Jogs";
+    [self.completedJogsButton addTarget:self action:@selector(completedJogsButtonTouchDownHandler:) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:self.completedJogsButton];
+    
+    // statisticsButton
+    self.statisticsButton = [[JJButton alloc] init];
+    [self.statisticsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.statisticsButton.color = [UIColor jogJournalGreen];
+    self.statisticsButton.image = [UIImage imageNamed:@"statistics-logo"];
+    self.statisticsButton.title = @"View My Statistics";
+    [self.statisticsButton addTarget:self action:@selector(statisticsButtonTouchDownHandler:) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:self.statisticsButton];
     
     // logOutButton
     self.logOutButton = [[JJButton alloc] init];
@@ -115,15 +127,19 @@
     }
     
     NSDictionary *views = @{ @"logoImageView": self.logoImageView,
-                             @"titleLabel": self.titleLabel,
                              @"startNewJogButton": self.startNewJogButton,
+                             @"completedJogsButton": self.completedJogsButton,
+                             @"statisticsButton": self.statisticsButton,
                              @"logOutButton": self.logOutButton };
     
     NSMutableArray *constraints = [NSMutableArray array];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-60-[logoImageView]-20-[titleLabel]-(>=20@750)-[startNewJogButton(==60)]-20-[logOutButton(==60)]-20-|" options:0 metrics:nil views:views]];
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:self.logoImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:-150.0]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[logoImageView]" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[startNewJogButton(==60)]-15-[completedJogsButton(==60)]-15-[statisticsButton(==60)]-15-[logOutButton(==60)]-20-|" options:0 metrics:nil views:views]];
     [constraints addObject:[NSLayoutConstraint constraintWithItem:self.logoImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[titleLabel]-|" options:0 metrics:nil views:views]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[startNewJogButton]-|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[completedJogsButton]-|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[statisticsButton]-|" options:0 metrics:nil views:views]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[logOutButton]-|" options:0 metrics:nil views:views]];
     
     self.viewConstraints = [constraints copy];
@@ -140,7 +156,23 @@
 
 - (void)startNewJogButtonTouchDownHandler:(JJButton *)button
 {
-    NSLog(@"New Jog");
+    self.navigationController.navigationBarHidden = NO;
+    JJActiveJogViewController *activeJogViewController = [[JJActiveJogViewController alloc] init];
+    [self.navigationController pushViewController:activeJogViewController animated:YES];
+}
+
+- (void)completedJogsButtonTouchDownHandler:(JJButton *)button
+{
+    self.navigationController.navigationBarHidden = NO;
+    JJCompletedJogsViewController *completedJogsViewController = [[JJCompletedJogsViewController alloc] init];
+    [self.navigationController pushViewController:completedJogsViewController animated:YES];
+}
+
+- (void)statisticsButtonTouchDownHandler:(JJButton *)button
+{
+    self.navigationController.navigationBarHidden = NO;
+    JJStatisticsViewController *statisticsViewController = [[JJStatisticsViewController alloc] init];
+    [self.navigationController pushViewController:statisticsViewController animated:YES];
 }
 
 - (void)logOutButtonTouchDownHandler:(JJButton *)button
@@ -155,6 +187,11 @@
     {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

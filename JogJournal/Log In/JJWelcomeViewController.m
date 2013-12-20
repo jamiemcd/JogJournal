@@ -160,7 +160,9 @@
     
     // Now the constraints that will be added to self.view
     constraints = [NSMutableArray array];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-60-[logoImageView]-20-[titleLabel]-(>=20@750)-[facebookConnectButton(==60)]-20-[emailSignUpButton(==60)]-20-[emailLogInContainerView]-|" options:0 metrics:nil views:views]];
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:self.logoImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:-120.0]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[logoImageView]-15-[titleLabel]" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[facebookConnectButton(==60)]-15-[emailSignUpButton(==60)]-15-[emailLogInContainerView]-|" options:0 metrics:nil views:views]];
     [constraints addObject:[NSLayoutConstraint constraintWithItem:self.logoImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[titleLabel]-|" options:0 metrics:nil views:views]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[facebookConnectButton]-|" options:0 metrics:nil views:views]];
