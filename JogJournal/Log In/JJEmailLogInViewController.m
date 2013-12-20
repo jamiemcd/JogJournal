@@ -12,6 +12,7 @@
 #import "JJButton.h"
 #import "JJEmailResetPasswordController.h"
 #import "JJParseManager.h"
+#import "SVProgressHUD.h"
 
 @interface JJEmailLogInViewController () <UITextFieldDelegate>
 
@@ -152,14 +153,16 @@
 
 - (void)logInButtonTouchDownHandler:(JJButton *)button
 {
+    [SVProgressHUD showWithStatus:@"Logging In..." maskType:SVProgressHUDMaskTypeBlack];
     __weak JJEmailLogInViewController *weakSelf = self;
     [[JJParseManager sharedManager] logInWithEmail:self.emailTextField.text password:self.passwordTextField.text withCallback:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            [SVProgressHUD showSuccessWithStatus:@"Log In Successful"];
         }
         else if (weakSelf)
         {
+            [SVProgressHUD dismiss];
             NSString *title = @"Error";
             NSString *message = [error localizedDescription];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];

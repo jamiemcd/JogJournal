@@ -185,7 +185,12 @@
 {
     if (self.welcomeViewController)
     {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        // We want a 1.25 second delay before dismissing the welcomeViewController so the user can see the login status change to "Login Successful"
+        double delayInSeconds = 1.25;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
     }
 }
 

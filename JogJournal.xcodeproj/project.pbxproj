@@ -47,6 +47,8 @@
 		FDC51FC01864DCF0006B5E77 /* JJActiveJogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FBF1864DCF0006B5E77 /* JJActiveJogViewController.m */; };
 		FDC51FC31864F63F006B5E77 /* JJCompletedJogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FC21864F63F006B5E77 /* JJCompletedJogsViewController.m */; };
 		FDC51FC61864F6B7006B5E77 /* JJStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FC51864F6B7006B5E77 /* JJStatisticsViewController.m */; };
+		FDC51FCD1864FD33006B5E77 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FDC51FCA1864FD33006B5E77 /* SVProgressHUD.bundle */; };
+		FDC51FCE1864FD33006B5E77 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FCC1864FD33006B5E77 /* SVProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,10 @@
 		FDC51FC21864F63F006B5E77 /* JJCompletedJogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCompletedJogsViewController.m; sourceTree = "<group>"; };
 		FDC51FC41864F6B7006B5E77 /* JJStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJStatisticsViewController.h; sourceTree = "<group>"; };
 		FDC51FC51864F6B7006B5E77 /* JJStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJStatisticsViewController.m; sourceTree = "<group>"; };
+		FDC51FC91864FD33006B5E77 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		FDC51FCA1864FD33006B5E77 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		FDC51FCB1864FD33006B5E77 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		FDC51FCC1864FD33006B5E77 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +225,7 @@
 				FDC51F8B1860BA83006B5E77 /* Parse */,
 				FDC51FA6186272FD006B5E77 /* Shared UI */,
 				FDC51F461860AAA8006B5E77 /* Supporting Files */,
+				FDC51FC71864FD33006B5E77 /* Vendor */,
 			);
 			path = JogJournal;
 			sourceTree = "<group>";
@@ -315,6 +322,25 @@
 			name = "Core Location";
 			sourceTree = "<group>";
 		};
+		FDC51FC71864FD33006B5E77 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				FDC51FC81864FD33006B5E77 /* SVProgressHUD */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		FDC51FC81864FD33006B5E77 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				FDC51FC91864FD33006B5E77 /* SVProgressHUD-Prefix.pch */,
+				FDC51FCA1864FD33006B5E77 /* SVProgressHUD.bundle */,
+				FDC51FCB1864FD33006B5E77 /* SVProgressHUD.h */,
+				FDC51FCC1864FD33006B5E77 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -392,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDC51F4A1860AAA8006B5E77 /* InfoPlist.strings in Resources */,
+				FDC51FCD1864FD33006B5E77 /* SVProgressHUD.bundle in Resources */,
 				FDC51F551860AAA8006B5E77 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +443,7 @@
 				FDC51F501860AAA8006B5E77 /* JJAppDelegate.m in Sources */,
 				FDC51FA518624FDB006B5E77 /* UIFont+Custom.m in Sources */,
 				FDC51FC61864F6B7006B5E77 /* JJStatisticsViewController.m in Sources */,
+				FDC51FCE1864FD33006B5E77 /* SVProgressHUD.m in Sources */,
 				FDC51F4C1860AAA8006B5E77 /* main.m in Sources */,
 				FDC51F8F1860BE6A006B5E77 /* JJCoreDataManager.m in Sources */,
 				FDC51F921860C1AA006B5E77 /* JJMainViewController.m in Sources */,

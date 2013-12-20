@@ -11,6 +11,7 @@
 #import "UIColor+Custom.h"
 #import "JJButton.h"
 #import "JJParseManager.h"
+#import "SVProgressHUD.h"
 
 @interface JJEmailResetPasswordController () <UITextFieldDelegate>
 
@@ -116,10 +117,12 @@
 
 - (void)resetPasswordButtonTouchDownHandler:(JJButton *)button
 {
+    [SVProgressHUD showWithStatus:@"Sending Password Reset Request..." maskType:SVProgressHUDMaskTypeBlack];
     __weak JJEmailResetPasswordController *weakSelf = self;
     [[JJParseManager sharedManager] resetPasswordForEmail:self.emailTextField.text withCallback:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
+            [SVProgressHUD showSuccessWithStatus:@"Password Reset Request Successful"];
             NSMutableAttributedString *attributedString = [weakSelf.label.attributedText mutableCopy];
             NSMutableString *string = [attributedString mutableString];
             [string setString:@"Please check your inbox for the email to reset your password"];
@@ -129,6 +132,7 @@
         }
         else if (weakSelf)
         {
+            [SVProgressHUD dismiss];
             NSString *title = @"Error";
             NSString *message = [error localizedDescription];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];

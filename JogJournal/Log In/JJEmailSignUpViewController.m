@@ -11,6 +11,7 @@
 #import "UIColor+Custom.h"
 #import "JJButton.h"
 #import "JJParseManager.h"
+#import "SVProgressHUD.h"
 
 @interface JJEmailSignUpViewController () <UITextFieldDelegate>
 
@@ -113,14 +114,16 @@
 
 - (void)signUpButtonTouchDownHandler:(JJButton *)button
 {
+    [SVProgressHUD showWithStatus:@"Signing Up..." maskType:SVProgressHUDMaskTypeBlack];
     __weak JJEmailSignUpViewController *weakSelf = self;
     [[JJParseManager sharedManager] signUpWithEmail:self.emailTextField.text password:self.passwordTextField.text withCallback:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            [SVProgressHUD showSuccessWithStatus:@"Sign Up Successful"];
         }
         else if (weakSelf)
         {
+            [SVProgressHUD dismiss];
             NSString *title = @"Error";
             NSString *message = [error localizedDescription];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
