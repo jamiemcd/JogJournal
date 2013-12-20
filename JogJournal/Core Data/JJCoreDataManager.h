@@ -10,4 +10,6 @@
 
 @interface JJCoreDataManager : NSObject
 
++ (JJCoreDataManager *)sharedManager;
+
 @end

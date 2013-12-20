@@ -1,9 +1,9 @@
 //
 //  UIFont+Custom.m
-//  Sightplan Client
+//  JogJournal
 //
-//  Created by Jamie McDaniel on 8/28/13.
-//  Copyright (c) 2013 Sightplan. All rights reserved.
+//  Created by Jamie McDaniel on 12/18/13.
+//  Copyright (c) 2013 Curious Find. All rights reserved.
 //
 
 #import "UIFont+Custom.h"

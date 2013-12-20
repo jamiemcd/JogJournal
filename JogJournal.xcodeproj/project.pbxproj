@@ -14,7 +14,6 @@
 		FDC51F4A1860AAA8006B5E77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDC51F481860AAA8006B5E77 /* InfoPlist.strings */; };
 		FDC51F4C1860AAA8006B5E77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F4B1860AAA8006B5E77 /* main.m */; };
 		FDC51F501860AAA8006B5E77 /* JJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F4F1860AAA8006B5E77 /* JJAppDelegate.m */; };
-		FDC51F531860AAA8006B5E77 /* JogJournal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F511860AAA8006B5E77 /* JogJournal.xcdatamodeld */; };
 		FDC51F551860AAA8006B5E77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDC51F541860AAA8006B5E77 /* Images.xcassets */; };
 		FDC51F5C1860AAA8006B5E77 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F5B1860AAA8006B5E77 /* XCTest.framework */; };
 		FDC51F5D1860AAA8006B5E77 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F3D1860AAA8006B5E77 /* Foundation.framework */; };
@@ -32,6 +31,18 @@
 		FDC51F831860B4E4006B5E77 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F821860B4E4006B5E77 /* Security.framework */; };
 		FDC51F851860B4ED006B5E77 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F841860B4ED006B5E77 /* StoreKit.framework */; };
 		FDC51F871860B4F6006B5E77 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F861860B4F6006B5E77 /* SystemConfiguration.framework */; };
+		FDC51F8A1860BA79006B5E77 /* JJParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F891860BA79006B5E77 /* JJParseManager.m */; };
+		FDC51F8F1860BE6A006B5E77 /* JJCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F8E1860BE6A006B5E77 /* JJCoreDataManager.m */; };
+		FDC51F921860C1AA006B5E77 /* JJMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F911860C1AA006B5E77 /* JJMainViewController.m */; };
+		FDC51F951860D5EE006B5E77 /* JogJournal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F931860D5EE006B5E77 /* JogJournal.xcdatamodeld */; };
+		FDC51F9B18622229006B5E77 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F9A18622229006B5E77 /* FacebookSDK.framework */; };
+		FDC51FA418624FDB006B5E77 /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FA118624FDB006B5E77 /* UIColor+Custom.m */; };
+		FDC51FA518624FDB006B5E77 /* UIFont+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FA318624FDB006B5E77 /* UIFont+Custom.m */; };
+		FDC51FA9186274C1006B5E77 /* JJButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FA8186274C1006B5E77 /* JJButton.m */; };
+		FDC51FB2186344BF006B5E77 /* JJEmailLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FAF186344BF006B5E77 /* JJEmailLogInViewController.m */; };
+		FDC51FB3186344BF006B5E77 /* JJWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB1186344BF006B5E77 /* JJWelcomeViewController.m */; };
+		FDC51FB61863747C006B5E77 /* JJEmailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB51863747C006B5E77 /* JJEmailSignUpViewController.m */; };
+		FDC51FB918637592006B5E77 /* JJEmailResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB818637592006B5E77 /* JJEmailResetPasswordController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +67,6 @@
 		FDC51F4D1860AAA8006B5E77 /* JogJournal-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JogJournal-Prefix.pch"; sourceTree = "<group>"; };
 		FDC51F4E1860AAA8006B5E77 /* JJAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJAppDelegate.h; sourceTree = "<group>"; };
 		FDC51F4F1860AAA8006B5E77 /* JJAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJAppDelegate.m; sourceTree = "<group>"; };
-		FDC51F521860AAA8006B5E77 /* JogJournal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JogJournal.xcdatamodel; sourceTree = "<group>"; };
 		FDC51F541860AAA8006B5E77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FDC51F5A1860AAA8006B5E77 /* JogJournalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JogJournalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDC51F5B1860AAA8006B5E77 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -73,6 +83,28 @@
 		FDC51F821860B4E4006B5E77 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FDC51F841860B4ED006B5E77 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FDC51F861860B4F6006B5E77 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FDC51F881860BA79006B5E77 /* JJParseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJParseManager.h; path = Parse/JJParseManager.h; sourceTree = "<group>"; };
+		FDC51F891860BA79006B5E77 /* JJParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJParseManager.m; path = Parse/JJParseManager.m; sourceTree = "<group>"; };
+		FDC51F8D1860BE6A006B5E77 /* JJCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJCoreDataManager.h; path = "Core Data/JJCoreDataManager.h"; sourceTree = "<group>"; };
+		FDC51F8E1860BE6A006B5E77 /* JJCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJCoreDataManager.m; path = "Core Data/JJCoreDataManager.m"; sourceTree = "<group>"; };
+		FDC51F901860C1AA006B5E77 /* JJMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJMainViewController.h; sourceTree = "<group>"; };
+		FDC51F911860C1AA006B5E77 /* JJMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJMainViewController.m; sourceTree = "<group>"; };
+		FDC51F941860D5EE006B5E77 /* JogJournal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JogJournal.xcdatamodel; sourceTree = "<group>"; };
+		FDC51F9A18622229006B5E77 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		FDC51FA018624FDB006B5E77 /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Custom.h"; sourceTree = "<group>"; };
+		FDC51FA118624FDB006B5E77 /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
+		FDC51FA218624FDB006B5E77 /* UIFont+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Custom.h"; sourceTree = "<group>"; };
+		FDC51FA318624FDB006B5E77 /* UIFont+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Custom.m"; sourceTree = "<group>"; };
+		FDC51FA7186274C1006B5E77 /* JJButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJButton.h; path = "Shared UI/JJButton.h"; sourceTree = "<group>"; };
+		FDC51FA8186274C1006B5E77 /* JJButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJButton.m; path = "Shared UI/JJButton.m"; sourceTree = "<group>"; };
+		FDC51FAE186344BF006B5E77 /* JJEmailLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJEmailLogInViewController.h; path = "Log In/JJEmailLogInViewController.h"; sourceTree = "<group>"; };
+		FDC51FAF186344BF006B5E77 /* JJEmailLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJEmailLogInViewController.m; path = "Log In/JJEmailLogInViewController.m"; sourceTree = "<group>"; };
+		FDC51FB0186344BF006B5E77 /* JJWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJWelcomeViewController.h; path = "Log In/JJWelcomeViewController.h"; sourceTree = "<group>"; };
+		FDC51FB1186344BF006B5E77 /* JJWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJWelcomeViewController.m; path = "Log In/JJWelcomeViewController.m"; sourceTree = "<group>"; };
+		FDC51FB41863747C006B5E77 /* JJEmailSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJEmailSignUpViewController.h; path = "Log In/JJEmailSignUpViewController.h"; sourceTree = "<group>"; };
+		FDC51FB51863747C006B5E77 /* JJEmailSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJEmailSignUpViewController.m; path = "Log In/JJEmailSignUpViewController.m"; sourceTree = "<group>"; };
+		FDC51FB718637592006B5E77 /* JJEmailResetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJEmailResetPasswordController.h; path = "Log In/JJEmailResetPasswordController.h"; sourceTree = "<group>"; };
+		FDC51FB818637592006B5E77 /* JJEmailResetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJEmailResetPasswordController.m; path = "Log In/JJEmailResetPasswordController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +123,7 @@
 				FDC51F771860B4A3006B5E77 /* AudioToolbox.framework in Frameworks */,
 				FDC51F401860AAA8006B5E77 /* CoreGraphics.framework in Frameworks */,
 				FDC51F441860AAA8006B5E77 /* CoreData.framework in Frameworks */,
+				FDC51F9B18622229006B5E77 /* FacebookSDK.framework in Frameworks */,
 				FDC51F421860AAA8006B5E77 /* UIKit.framework in Frameworks */,
 				FDC51F3E1860AAA8006B5E77 /* Foundation.framework in Frameworks */,
 				FDC51F731860B444006B5E77 /* Parse.framework in Frameworks */,
@@ -133,6 +166,7 @@
 		FDC51F3C1860AAA8006B5E77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FDC51F9A18622229006B5E77 /* FacebookSDK.framework */,
 				FDC51F861860B4F6006B5E77 /* SystemConfiguration.framework */,
 				FDC51F841860B4ED006B5E77 /* StoreKit.framework */,
 				FDC51F821860B4E4006B5E77 /* Security.framework */,
@@ -155,10 +189,16 @@
 		FDC51F451860AAA8006B5E77 /* JogJournal */ = {
 			isa = PBXGroup;
 			children = (
+				FDC51F9F18624FDB006B5E77 /* Categories */,
+				FDC51F8C1860BDDF006B5E77 /* Core Data */,
+				FDC51F541860AAA8006B5E77 /* Images.xcassets */,
 				FDC51F4E1860AAA8006B5E77 /* JJAppDelegate.h */,
 				FDC51F4F1860AAA8006B5E77 /* JJAppDelegate.m */,
-				FDC51F541860AAA8006B5E77 /* Images.xcassets */,
-				FDC51F511860AAA8006B5E77 /* JogJournal.xcdatamodeld */,
+				FDC51F901860C1AA006B5E77 /* JJMainViewController.h */,
+				FDC51F911860C1AA006B5E77 /* JJMainViewController.m */,
+				FDC51FAD186343F4006B5E77 /* Log In */,
+				FDC51F8B1860BA83006B5E77 /* Parse */,
+				FDC51FA6186272FD006B5E77 /* Shared UI */,
 				FDC51F461860AAA8006B5E77 /* Supporting Files */,
 			);
 			path = JogJournal;
@@ -191,6 +231,60 @@
 				FDC51F651860AAA8006B5E77 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FDC51F8B1860BA83006B5E77 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				FDC51F881860BA79006B5E77 /* JJParseManager.h */,
+				FDC51F891860BA79006B5E77 /* JJParseManager.m */,
+			);
+			name = Parse;
+			sourceTree = "<group>";
+		};
+		FDC51F8C1860BDDF006B5E77 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				FDC51F931860D5EE006B5E77 /* JogJournal.xcdatamodeld */,
+				FDC51F8D1860BE6A006B5E77 /* JJCoreDataManager.h */,
+				FDC51F8E1860BE6A006B5E77 /* JJCoreDataManager.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		FDC51F9F18624FDB006B5E77 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FDC51FA018624FDB006B5E77 /* UIColor+Custom.h */,
+				FDC51FA118624FDB006B5E77 /* UIColor+Custom.m */,
+				FDC51FA218624FDB006B5E77 /* UIFont+Custom.h */,
+				FDC51FA318624FDB006B5E77 /* UIFont+Custom.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		FDC51FA6186272FD006B5E77 /* Shared UI */ = {
+			isa = PBXGroup;
+			children = (
+				FDC51FA7186274C1006B5E77 /* JJButton.h */,
+				FDC51FA8186274C1006B5E77 /* JJButton.m */,
+			);
+			name = "Shared UI";
+			sourceTree = "<group>";
+		};
+		FDC51FAD186343F4006B5E77 /* Log In */ = {
+			isa = PBXGroup;
+			children = (
+				FDC51FAE186344BF006B5E77 /* JJEmailLogInViewController.h */,
+				FDC51FAF186344BF006B5E77 /* JJEmailLogInViewController.m */,
+				FDC51FB718637592006B5E77 /* JJEmailResetPasswordController.h */,
+				FDC51FB818637592006B5E77 /* JJEmailResetPasswordController.m */,
+				FDC51FB41863747C006B5E77 /* JJEmailSignUpViewController.h */,
+				FDC51FB51863747C006B5E77 /* JJEmailSignUpViewController.m */,
+				FDC51FB0186344BF006B5E77 /* JJWelcomeViewController.h */,
+				FDC51FB1186344BF006B5E77 /* JJWelcomeViewController.m */,
+			);
+			name = "Log In";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,9 +383,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDC51F531860AAA8006B5E77 /* JogJournal.xcdatamodeld in Sources */,
+				FDC51F8A1860BA79006B5E77 /* JJParseManager.m in Sources */,
+				FDC51FB61863747C006B5E77 /* JJEmailSignUpViewController.m in Sources */,
 				FDC51F501860AAA8006B5E77 /* JJAppDelegate.m in Sources */,
+				FDC51FA518624FDB006B5E77 /* UIFont+Custom.m in Sources */,
 				FDC51F4C1860AAA8006B5E77 /* main.m in Sources */,
+				FDC51F8F1860BE6A006B5E77 /* JJCoreDataManager.m in Sources */,
+				FDC51F921860C1AA006B5E77 /* JJMainViewController.m in Sources */,
+				FDC51FA418624FDB006B5E77 /* UIColor+Custom.m in Sources */,
+				FDC51FB3186344BF006B5E77 /* JJWelcomeViewController.m in Sources */,
+				FDC51F951860D5EE006B5E77 /* JogJournal.xcdatamodeld in Sources */,
+				FDC51FA9186274C1006B5E77 /* JJButton.m in Sources */,
+				FDC51FB2186344BF006B5E77 /* JJEmailLogInViewController.m in Sources */,
+				FDC51FB918637592006B5E77 /* JJEmailResetPasswordController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,13 +616,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FDC51F511860AAA8006B5E77 /* JogJournal.xcdatamodeld */ = {
+		FDC51F931860D5EE006B5E77 /* JogJournal.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FDC51F521860AAA8006B5E77 /* JogJournal.xcdatamodel */,
+				FDC51F941860D5EE006B5E77 /* JogJournal.xcdatamodel */,
 			);
-			currentVersion = FDC51F521860AAA8006B5E77 /* JogJournal.xcdatamodel */;
-			path = JogJournal.xcdatamodeld;
+			currentVersion = FDC51F941860D5EE006B5E77 /* JogJournal.xcdatamodel */;
+			name = JogJournal.xcdatamodeld;
+			path = "Core Data/JogJournal.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

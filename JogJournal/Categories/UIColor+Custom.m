@@ -1,9 +1,9 @@
 //
-//  UIColor+Custom.m
-//  Sightplan Client
+//  UIColor+Custom.h
+//  JogJournal
 //
-//  Created by Jamie McDaniel on 7/18/13.
-//  Copyright (c) 2013 Sightplan. All rights reserved.
+//  Created by Jamie McDaniel on 12/18/13.
+//  Copyright (c) 2013 Curious Find. All rights reserved.
 //
 
 #import "UIColor+Custom.h"
@@ -56,127 +56,29 @@
     return hexComponent / 255.0;
 }
 
-+ (UIColor *)emergencyColor
++ (UIColor *)jogJournalBlue
 {
-    return [UIColor colorWithHexString:@"#F0222D"];
+    return [UIColor colorWithHexString:@"#C7DEFF"];
 }
 
-+ (UIColor *)pastDueColor
++ (UIColor *)jogJournalGreen
 {
-    return [UIColor colorWithHexString:@"#FFC300"];
+    return [UIColor colorWithHexString:@"#7D9579"];
 }
 
-+ (UIColor *)headerColor
++ (UIColor *)jogJournalBrown
 {
-    return [UIColor colorWithHexString:@"#EEEEEE"];
+    return [UIColor colorWithHexString:@"#CA8859"];
 }
 
-+ (UIColor *)headingTextColor
++ (UIColor *)facebookBlue
 {
-    return [UIColor blackColor];
+    return [UIColor colorWithHexString:@"#3B579D"];
 }
 
-+ (UIColor *)subheadingTextColor
++ (UIColor *)emailRed
 {
-    return [UIColor colorWithHexString:@"#55565A"];
+    return [UIColor colorWithHexString:@"#E4122B"];
 }
-
-+ (UIColor *)progressColor
-{
-    return [UIColor colorWithHexString:@"#0082CA"];
-}
-
-+ (UIColor *)progressDirectionColor
-{
-    return [UIColor colorWithHexString:@"8FC7E8"];
-}
-
-+ (UIColor *)pausedProgressColor
-{
-    return [UIColor colorWithHexString:@"#55565A"];
-}
-
-+ (UIColor *)pausedProgressDirectionColor
-{
-    return [UIColor colorWithHexString:@"CAC8C8"];
-}
-
-+ (UIColor *)completeColor
-{
-    return [UIColor colorWithHexString:@"77BC1F"];
-}
-
-+ (UIColor *)openColor
-{
-    return [UIColor colorWithHexString:@"#EEEEEE"];
-}
-
-+ (UIColor *)grayBorderColor
-{
-    return [UIColor colorWithHexString:@"CAC8C8"];
-}
-
-+ (UIColor *)accessoryColor
-{
-    return [UIColor colorWithHexString:@"CAC8C8"];
-}
-
-+ (UIColor *)mapMarkerBadgeColor
-{
-    return [UIColor colorWithHexString:@"#55565A"];
-}
-
-+ (UIColor *)buttonTintColor
-{
-    return [UIColor colorWithHexString:@"8FC7E8"];
-}
-
-+ (UIColor *)cellHighlightedColor
-{
-    return [UIColor colorWithHexString:@"D9D9D9"];
-}
-
-+ (UIColor *)cellSelectedColor
-{
-    return [UIColor colorWithHexString:@"D9D9D9"];
-}
-
-+ (UIColor *)recordRed
-{
-    return [UIColor colorWithHexString:@"F0222D"];
-}
-
-+ (UIColor *)controlColor
-{
-    return [UIColor colorWithHexString:@"#4287E0"];
-}
-
-+ (UIColor *)buttonBorderColor
-{
-    return [[UIColor whiteColor] colorWithAlphaComponent:0.5];
-}
-
-+ (UIColor *)sightWalkBlueColor
-{
-    return [UIColor colorWithHexString:@"#0082CA"];
-}
-
-+ (UIColor *)gridSelectColor
-{
-    return [UIColor colorWithHexString:@"#0082CA"];
-}
-
-+ (UIColor *)gridCircleStrokeColor
-{
-    return [UIColor colorWithHexString:@"#BEBBBB"];
-}
-
-+ (UIColor *)gridAndSelectorOverlayColor
-{
-    return [UIColor colorWithWhite:0 alpha:0.8];
-}
-
-
-
 @end
  

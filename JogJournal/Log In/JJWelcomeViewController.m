@@ -11,13 +11,18 @@
 #import "UIFont+Custom.h"
 #import "UIColor+Custom.h"
 #import "JJParseManager.h"
+#import "JJEmailSignUpViewController.h"
+#import "JJEmailLogInViewController.h"
 
 @interface JJWelcomeViewController ()
 
 @property (nonatomic, strong) UIImageView *logoImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) JJButton *facebookLogInButton;
-@property (nonatomic, strong) JJButton *emailLogInButton;
+@property (nonatomic, strong) JJButton *facebookConnectButton;
+@property (nonatomic, strong) JJButton *emailSignUpButton;
+@property (nonatomic, strong) UIView *emailLogInContainerView;
+@property (nonatomic, strong) UILabel *alreadySignedUpLabel;
+@property (nonatomic, strong) UILabel *emailLogInLabel;
 
 @property (nonatomic, strong) NSArray *viewConstraints;
 
@@ -30,7 +35,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.toolbarHidden = YES;
+
     }
     return self;
 }
@@ -42,8 +47,17 @@
     [self createUI];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)createUI
 {
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     // logoImageView
     self.logoImageView = [[UIImageView alloc] init];
     [self.logoImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -67,24 +81,52 @@
     self.titleLabel.attributedText = attributedString;
     [self.view addSubview:self.titleLabel];
     
-    // facebookLogInButton
-    self.facebookLogInButton = [[JJButton alloc] init];
-    [self.facebookLogInButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.facebookLogInButton.color = [UIColor facebookBlue];
-    self.facebookLogInButton.image = [UIImage imageNamed:@"facebook-logo"];
-    self.facebookLogInButton.title = @"Log In With Facebook";
-    [self.facebookLogInButton addTarget:self action:@selector(facebookLogInButtonTouchDownHandler:) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:self.facebookLogInButton];
+    // facebookConnectButton
+    self.facebookConnectButton = [[JJButton alloc] init];
+    [self.facebookConnectButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.facebookConnectButton.color = [UIColor facebookBlue];
+    self.facebookConnectButton.image = [UIImage imageNamed:@"facebook-logo"];
+    self.facebookConnectButton.title = @"Connect With Facebook";
+    [self.facebookConnectButton addTarget:self action:@selector(facebookConnectButtonTouchDownHandler:) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:self.facebookConnectButton];
     
-    // emailLogInButton
-    self.emailLogInButton = [[JJButton alloc] init];
-    [self.emailLogInButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.emailLogInButton.color = [UIColor emailRed];
-    self.emailLogInButton.image = [UIImage imageNamed:@"email-logo"];
-    self.emailLogInButton.title = @"Log In With Email";
-    [self.emailLogInButton addTarget:self action:@selector(emailLogInButtonTouchDownHandler:) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:self.emailLogInButton];
+    // emailSignUpButton
+    self.emailSignUpButton = [[JJButton alloc] init];
+    [self.emailSignUpButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.emailSignUpButton.color = [UIColor emailRed];
+    self.emailSignUpButton.image = [UIImage imageNamed:@"email-logo"];
+    self.emailSignUpButton.title = @"Sign Up with Email";
+    [self.emailSignUpButton addTarget:self action:@selector(emailSignUpButtonTouchDownHandler:) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:self.emailSignUpButton];
     
+    // emailLogInContainerView
+    self.emailLogInContainerView = [[UIView alloc] init];
+    [self.emailLogInContainerView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:self.emailLogInContainerView];
+    
+    // alreadySignedUpLabel
+    font = [UIFont lightAppFontOfSize:16];
+    color = [UIColor blackColor];
+    attributes = @{ NSFontAttributeName: font,
+                    NSForegroundColorAttributeName: color };
+    attributedString = [[NSAttributedString alloc] initWithString:@"Already signed up?" attributes:attributes];
+    self.alreadySignedUpLabel = [[UILabel alloc] init];
+    [self.alreadySignedUpLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.alreadySignedUpLabel.attributedText = attributedString;
+    [self.emailLogInContainerView addSubview:self.alreadySignedUpLabel];
+    
+    // emailLogInLabel
+    color = [UIColor emailRed];
+    attributes = @{ NSFontAttributeName: font,
+                    NSForegroundColorAttributeName: color };
+    attributedString = [[NSAttributedString alloc] initWithString:@" Log in now!" attributes:attributes];
+    self.emailLogInLabel = [[UILabel alloc] init];
+    [self.emailLogInLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.emailLogInLabel.attributedText = attributedString;
+    self.emailLogInLabel.userInteractionEnabled = YES;
+    [self.emailLogInContainerView addSubview:self.emailLogInLabel];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emailLogInLabelTapGestureRecognizerHandler:)];
+    [self.emailLogInLabel addGestureRecognizer:tapGestureRecognizer];
     
     [self.view setNeedsUpdateConstraints];
 }
@@ -98,31 +140,71 @@
         [self.view removeConstraints:self.viewConstraints];
     }
     
+    // We don't have to worry about anyone else adding constraints to our internal emailLogInContainerView, so we can just remove all of its constraints
+    [self.emailLogInContainerView removeConstraints:self.emailLogInContainerView.constraints];
+    
     NSDictionary *views = @{ @"logoImageView": self.logoImageView,
                              @"titleLabel": self.titleLabel,
-                             @"facebookLogInButton": self.facebookLogInButton,
-                             @"emailLogInButton": self.emailLogInButton };
+                             @"facebookConnectButton": self.facebookConnectButton,
+                             @"emailSignUpButton": self.emailSignUpButton,
+                             @"emailLogInContainerView": self.emailLogInContainerView,
+                             @"alreadySignedUpLabel": self.alreadySignedUpLabel,
+                             @"emailLogInLabel": self.emailLogInLabel };
     
+    // First, the constraints to be added to self.emailLogInContainerView
     NSMutableArray *constraints = [NSMutableArray array];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[alreadySignedUpLabel][emailLogInLabel]|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[alreadySignedUpLabel]|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[emailLogInLabel]|" options:0 metrics:nil views:views]];
+    [self.emailLogInContainerView addConstraints:[constraints copy]];
     
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-60-[logoImageView]-20-[titleLabel]-(>=20@750)-[facebookLogInButton(==60)]-20-[emailLogInButton(==60)]-|" options:0 metrics:nil views:views]];
+    // Now the constraints that will be added to self.view
+    constraints = [NSMutableArray array];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-60-[logoImageView]-20-[titleLabel]-(>=20@750)-[facebookConnectButton(==60)]-20-[emailSignUpButton(==60)]-20-[emailLogInContainerView]-|" options:0 metrics:nil views:views]];
     [constraints addObject:[NSLayoutConstraint constraintWithItem:self.logoImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[titleLabel]-|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[facebookLogInButton]-|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[emailLogInButton]-|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[facebookConnectButton]-|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[emailSignUpButton]-|" options:0 metrics:nil views:views]];
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:self.emailLogInContainerView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     
     self.viewConstraints = [constraints copy];
     [self.view addConstraints:self.viewConstraints];
 }
 
-- (void)facebookLogInButtonTouchDownHandler:(JJButton *)button
+- (void)facebookConnectButtonTouchDownHandler:(JJButton *)button
 {
-    [[JJParseManager sharedManager] logInToFacebook];
+    [[JJParseManager sharedManager] logInToFacebookWithCallback:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        else
+        {
+            NSString *title = @"Error";
+            NSString *message = [error localizedDescription];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alertView show];
+        }
+    }];
 }
 
-- (void)emailLogInButtonTouchDownHandler:(JJButton *)button
+- (void)emailSignUpButtonTouchDownHandler:(JJButton *)button
 {
+    // navigate after a short delay so the user can see the button highlight
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        self.navigationController.navigationBarHidden = NO;
+        JJEmailSignUpViewController *emailSignUpViewController = [[JJEmailSignUpViewController alloc] init];
+        [self.navigationController pushViewController:emailSignUpViewController animated:YES];
+    });
+}
 
+- (void)emailLogInLabelTapGestureRecognizerHandler:(UITapGestureRecognizer *)tapGestureRecognizer
+{
+    self.navigationController.navigationBarHidden = NO;
+    JJEmailLogInViewController *emailLogInViewController = [[JJEmailLogInViewController alloc] init];
+    [self.navigationController pushViewController:emailLogInViewController animated:YES];
 }
 
 @end

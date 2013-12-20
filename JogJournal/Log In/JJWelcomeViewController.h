@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JJWelcomeViewController : UINavigationController
+@interface JJWelcomeViewController : UIViewController
 
 @end
