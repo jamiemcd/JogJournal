@@ -65,11 +65,6 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 }
 
-- (BOOL)isUserLoggedIn
-{
-    return [PFUser currentUser] ? YES : NO;
-}
-
 - (void)logInToFacebookWithCallback:(JJParseManagerCallback)callback
 {
     [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {

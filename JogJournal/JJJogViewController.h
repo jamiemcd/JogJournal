@@ -1,5 +1,5 @@
 //
-//  JJActiveJogViewController.h
+//  JJJogViewController.h
 //  JogJournal
 //
 //  Created by Jamie McDaniel on 12/20/13.
@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JJActiveJogViewController : UIViewController
+@class Jog;
+
+@interface JJJogViewController : UIViewController
+
+@property (nonatomic, strong) Jog *jog;
 
 @end

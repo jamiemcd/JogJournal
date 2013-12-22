@@ -8,10 +8,11 @@
 
 #import "JJMainViewController.h"
 #import "JJWelcomeViewController.h"
-#import "JJActiveJogViewController.h"
+#import "JJJogViewController.h"
 #import "JJCompletedJogsViewController.h"
 #import "JJStatisticsViewController.h"
 #import "JJParseManager.h"
+#import "JJCoreDataManager.h"
 #import "JJButton.h"
 #import "UIFont+Custom.h"
 #import "UIColor+Custom.h"
@@ -52,13 +53,14 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = YES;
+    [self updateUI];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if ([[JJParseManager sharedManager] isUserLoggedIn])
+    if ([JJCoreDataManager sharedManager].currentUser)
     {
         
     }
@@ -117,6 +119,11 @@
     [self.view setNeedsUpdateConstraints];
 }
 
+- (void)updateUI
+{
+    self.startNewJogButton.title = [JJCoreDataManager sharedManager].activeJog ? @"Active Jog in Progress" : @"Start a New Jog";
+}
+
 - (void)updateViewConstraints
 {
     [super updateViewConstraints];
@@ -157,14 +164,15 @@
 - (void)startNewJogButtonTouchDownHandler:(JJButton *)button
 {
     self.navigationController.navigationBarHidden = NO;
-    JJActiveJogViewController *activeJogViewController = [[JJActiveJogViewController alloc] init];
-    [self.navigationController pushViewController:activeJogViewController animated:YES];
+    JJJogViewController *jogViewController = [[JJJogViewController alloc] init];
+    [self.navigationController pushViewController:jogViewController animated:YES];
 }
 
 - (void)completedJogsButtonTouchDownHandler:(JJButton *)button
 {
     self.navigationController.navigationBarHidden = NO;
     JJCompletedJogsViewController *completedJogsViewController = [[JJCompletedJogsViewController alloc] init];
+    completedJogsViewController.user = [JJCoreDataManager sharedManager].currentUser;
     [self.navigationController pushViewController:completedJogsViewController animated:YES];
 }
 

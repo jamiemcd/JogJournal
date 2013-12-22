@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FDB1A8B71867823C009C9643 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8B61867823C009C9643 /* Location.m */; };
+		FDB1A8BA1867823D009C9643 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8B91867823D009C9643 /* User.m */; };
+		FDB1A8BD1867823D009C9643 /* Jog.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8BC1867823D009C9643 /* Jog.m */; };
 		FDC51F3E1860AAA8006B5E77 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F3D1860AAA8006B5E77 /* Foundation.framework */; };
 		FDC51F401860AAA8006B5E77 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F3F1860AAA8006B5E77 /* CoreGraphics.framework */; };
 		FDC51F421860AAA8006B5E77 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F411860AAA8006B5E77 /* UIKit.framework */; };
@@ -44,11 +47,15 @@
 		FDC51FB61863747C006B5E77 /* JJEmailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB51863747C006B5E77 /* JJEmailSignUpViewController.m */; };
 		FDC51FB918637592006B5E77 /* JJEmailResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB818637592006B5E77 /* JJEmailResetPasswordController.m */; };
 		FDC51FBD1864A545006B5E77 /* JJLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FBC1864A545006B5E77 /* JJLocationManager.m */; };
-		FDC51FC01864DCF0006B5E77 /* JJActiveJogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FBF1864DCF0006B5E77 /* JJActiveJogViewController.m */; };
+		FDC51FC01864DCF0006B5E77 /* JJJogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FBF1864DCF0006B5E77 /* JJJogViewController.m */; };
 		FDC51FC31864F63F006B5E77 /* JJCompletedJogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FC21864F63F006B5E77 /* JJCompletedJogsViewController.m */; };
 		FDC51FC61864F6B7006B5E77 /* JJStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FC51864F6B7006B5E77 /* JJStatisticsViewController.m */; };
 		FDC51FCD1864FD33006B5E77 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FDC51FCA1864FD33006B5E77 /* SVProgressHUD.bundle */; };
 		FDC51FCE1864FD33006B5E77 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FCC1864FD33006B5E77 /* SVProgressHUD.m */; };
+		FDC51FD0186602A7006B5E77 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51FCF186602A7006B5E77 /* MapKit.framework */; };
+		FDC51FDC18661302006B5E77 /* User+AdditionalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FDB18661302006B5E77 /* User+AdditionalMethods.m */; };
+		FDC51FE318661363006B5E77 /* Jog+AdditionalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FE218661363006B5E77 /* Jog+AdditionalMethods.m */; };
+		FDC51FE618661383006B5E77 /* Location+AdditionalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FE518661383006B5E77 /* Location+AdditionalMethods.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +69,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FDC51F3A1860AAA8006B5E77 /* JogJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JogJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDB1A8B51867823C009C9643 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Core Data/Location.h"; sourceTree = "<group>"; };
+		FDB1A8B61867823C009C9643 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Core Data/Location.m"; sourceTree = "<group>"; };
+		FDB1A8B81867823D009C9643 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = "Core Data/User.h"; sourceTree = "<group>"; };
+		FDB1A8B91867823D009C9643 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = "Core Data/User.m"; sourceTree = "<group>"; };
+		FDB1A8BB1867823D009C9643 /* Jog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Jog.h; path = "Core Data/Jog.h"; sourceTree = "<group>"; };
+		FDB1A8BC1867823D009C9643 /* Jog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Jog.m; path = "Core Data/Jog.m"; sourceTree = "<group>"; };
+		FDC51F3A1860AAA8006B5E77 /* JogJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = JogJournal.app; path = "Jog Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDC51F3D1860AAA8006B5E77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FDC51F3F1860AAA8006B5E77 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FDC51F411860AAA8006B5E77 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -113,8 +126,8 @@
 		FDC51FB818637592006B5E77 /* JJEmailResetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJEmailResetPasswordController.m; path = "Log In/JJEmailResetPasswordController.m"; sourceTree = "<group>"; };
 		FDC51FBB1864A545006B5E77 /* JJLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJLocationManager.h; path = "Core Location/JJLocationManager.h"; sourceTree = "<group>"; };
 		FDC51FBC1864A545006B5E77 /* JJLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJLocationManager.m; path = "Core Location/JJLocationManager.m"; sourceTree = "<group>"; };
-		FDC51FBE1864DCF0006B5E77 /* JJActiveJogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJActiveJogViewController.h; sourceTree = "<group>"; };
-		FDC51FBF1864DCF0006B5E77 /* JJActiveJogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJActiveJogViewController.m; sourceTree = "<group>"; };
+		FDC51FBE1864DCF0006B5E77 /* JJJogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJJogViewController.h; sourceTree = "<group>"; };
+		FDC51FBF1864DCF0006B5E77 /* JJJogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJJogViewController.m; sourceTree = "<group>"; };
 		FDC51FC11864F63F006B5E77 /* JJCompletedJogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCompletedJogsViewController.h; sourceTree = "<group>"; };
 		FDC51FC21864F63F006B5E77 /* JJCompletedJogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCompletedJogsViewController.m; sourceTree = "<group>"; };
 		FDC51FC41864F6B7006B5E77 /* JJStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJStatisticsViewController.h; sourceTree = "<group>"; };
@@ -123,6 +136,13 @@
 		FDC51FCA1864FD33006B5E77 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		FDC51FCB1864FD33006B5E77 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		FDC51FCC1864FD33006B5E77 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		FDC51FCF186602A7006B5E77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FDC51FDA18661302006B5E77 /* User+AdditionalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "User+AdditionalMethods.h"; path = "Core Data/Categories/User+AdditionalMethods.h"; sourceTree = "<group>"; };
+		FDC51FDB18661302006B5E77 /* User+AdditionalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "User+AdditionalMethods.m"; path = "Core Data/Categories/User+AdditionalMethods.m"; sourceTree = "<group>"; };
+		FDC51FE118661363006B5E77 /* Jog+AdditionalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Jog+AdditionalMethods.h"; path = "Core Data/Categories/Jog+AdditionalMethods.h"; sourceTree = "<group>"; };
+		FDC51FE218661363006B5E77 /* Jog+AdditionalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Jog+AdditionalMethods.m"; path = "Core Data/Categories/Jog+AdditionalMethods.m"; sourceTree = "<group>"; };
+		FDC51FE418661383006B5E77 /* Location+AdditionalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Location+AdditionalMethods.h"; path = "Core Data/Categories/Location+AdditionalMethods.h"; sourceTree = "<group>"; };
+		FDC51FE518661383006B5E77 /* Location+AdditionalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Location+AdditionalMethods.m"; path = "Core Data/Categories/Location+AdditionalMethods.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +152,7 @@
 			files = (
 				FDC51F871860B4F6006B5E77 /* SystemConfiguration.framework in Frameworks */,
 				FDC51F851860B4ED006B5E77 /* StoreKit.framework in Frameworks */,
+				FDC51FD0186602A7006B5E77 /* MapKit.framework in Frameworks */,
 				FDC51F831860B4E4006B5E77 /* Security.framework in Frameworks */,
 				FDC51F811860B4DB006B5E77 /* QuartzCore.framework in Frameworks */,
 				FDC51F7F1860B4D1006B5E77 /* MobileCoreServices.framework in Frameworks */,
@@ -184,6 +205,7 @@
 		FDC51F3C1860AAA8006B5E77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FDC51FCF186602A7006B5E77 /* MapKit.framework */,
 				FDC51F9A18622229006B5E77 /* FacebookSDK.framework */,
 				FDC51F861860B4F6006B5E77 /* SystemConfiguration.framework */,
 				FDC51F841860B4ED006B5E77 /* StoreKit.framework */,
@@ -211,8 +233,8 @@
 				FDC51F8C1860BDDF006B5E77 /* Core Data */,
 				FDC51FBA1864A522006B5E77 /* Core Location */,
 				FDC51F541860AAA8006B5E77 /* Images.xcassets */,
-				FDC51FBE1864DCF0006B5E77 /* JJActiveJogViewController.h */,
-				FDC51FBF1864DCF0006B5E77 /* JJActiveJogViewController.m */,
+				FDC51FBE1864DCF0006B5E77 /* JJJogViewController.h */,
+				FDC51FBF1864DCF0006B5E77 /* JJJogViewController.m */,
 				FDC51F4E1860AAA8006B5E77 /* JJAppDelegate.h */,
 				FDC51F4F1860AAA8006B5E77 /* JJAppDelegate.m */,
 				FDC51FC11864F63F006B5E77 /* JJCompletedJogsViewController.h */,
@@ -271,9 +293,16 @@
 		FDC51F8C1860BDDF006B5E77 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				FDC51F931860D5EE006B5E77 /* JogJournal.xcdatamodeld */,
+				FDC51FDD18661310006B5E77 /* Categories */,
 				FDC51F8D1860BE6A006B5E77 /* JJCoreDataManager.h */,
 				FDC51F8E1860BE6A006B5E77 /* JJCoreDataManager.m */,
+				FDC51F931860D5EE006B5E77 /* JogJournal.xcdatamodeld */,
+				FDB1A8BB1867823D009C9643 /* Jog.h */,
+				FDB1A8BC1867823D009C9643 /* Jog.m */,
+				FDB1A8B81867823D009C9643 /* User.h */,
+				FDB1A8B91867823D009C9643 /* User.m */,
+				FDB1A8B51867823C009C9643 /* Location.h */,
+				FDB1A8B61867823C009C9643 /* Location.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -341,6 +370,19 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		FDC51FDD18661310006B5E77 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FDC51FE118661363006B5E77 /* Jog+AdditionalMethods.h */,
+				FDC51FE218661363006B5E77 /* Jog+AdditionalMethods.m */,
+				FDC51FE418661383006B5E77 /* Location+AdditionalMethods.h */,
+				FDC51FE518661383006B5E77 /* Location+AdditionalMethods.m */,
+				FDC51FDA18661302006B5E77 /* User+AdditionalMethods.h */,
+				FDC51FDB18661302006B5E77 /* User+AdditionalMethods.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -389,6 +431,16 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Curious Find";
 				TargetAttributes = {
+					FDC51F391860AAA8006B5E77 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					FDC51F591860AAA8006B5E77 = {
 						TestTargetID = FDC51F391860AAA8006B5E77;
 					};
@@ -438,23 +490,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDB1A8BD1867823D009C9643 /* Jog.m in Sources */,
 				FDC51F8A1860BA79006B5E77 /* JJParseManager.m in Sources */,
 				FDC51FB61863747C006B5E77 /* JJEmailSignUpViewController.m in Sources */,
+				FDC51FE318661363006B5E77 /* Jog+AdditionalMethods.m in Sources */,
+				FDC51FDC18661302006B5E77 /* User+AdditionalMethods.m in Sources */,
 				FDC51F501860AAA8006B5E77 /* JJAppDelegate.m in Sources */,
 				FDC51FA518624FDB006B5E77 /* UIFont+Custom.m in Sources */,
 				FDC51FC61864F6B7006B5E77 /* JJStatisticsViewController.m in Sources */,
 				FDC51FCE1864FD33006B5E77 /* SVProgressHUD.m in Sources */,
+				FDB1A8BA1867823D009C9643 /* User.m in Sources */,
 				FDC51F4C1860AAA8006B5E77 /* main.m in Sources */,
 				FDC51F8F1860BE6A006B5E77 /* JJCoreDataManager.m in Sources */,
 				FDC51F921860C1AA006B5E77 /* JJMainViewController.m in Sources */,
 				FDC51FA418624FDB006B5E77 /* UIColor+Custom.m in Sources */,
 				FDC51FB3186344BF006B5E77 /* JJWelcomeViewController.m in Sources */,
+				FDC51FE618661383006B5E77 /* Location+AdditionalMethods.m in Sources */,
+				FDB1A8B71867823C009C9643 /* Location.m in Sources */,
 				FDC51F951860D5EE006B5E77 /* JogJournal.xcdatamodeld in Sources */,
 				FDC51FBD1864A545006B5E77 /* JJLocationManager.m in Sources */,
 				FDC51FA9186274C1006B5E77 /* JJButton.m in Sources */,
 				FDC51FB2186344BF006B5E77 /* JJEmailLogInViewController.m in Sources */,
 				FDC51FC31864F63F006B5E77 /* JJCompletedJogsViewController.m in Sources */,
-				FDC51FC01864DCF0006B5E77 /* JJActiveJogViewController.m in Sources */,
+				FDC51FC01864DCF0006B5E77 /* JJJogViewController.m in Sources */,
 				FDC51FB918637592006B5E77 /* JJEmailResetPasswordController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -664,6 +722,7 @@
 				FDC51F6E1860AAA8006B5E77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FDC51F6F1860AAA8006B5E77 /* Build configuration list for PBXNativeTarget "JogJournalTests" */ = {
 			isa = XCConfigurationList;
@@ -672,6 +731,7 @@
 				FDC51F711860AAA8006B5E77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -85,7 +85,7 @@
 
 - (BOOL)locationMeetsRequiredAccuracy:(CLLocation *)location
 {
-    return (self.location.horizontalAccuracy <= requiredGPSAccuracyForLocationToBeConsideredAccurate) ? YES : NO;
+    return (self.location && self.location.horizontalAccuracy <= requiredGPSAccuracyForLocationToBeConsideredAccurate) ? YES : NO;
 }
 
 - (void)getLocationUpdateWithCallback:(JJLocationManagerGetLocationUpdateCallback)callback
@@ -186,9 +186,9 @@
     
     //Make sure the location is fresh
     NSTimeInterval timeInterval = [[NSDate date] timeIntervalSinceDate:location.timestamp];
-    if (timeInterval < timeIntervalForLocationToBeConsideredFresh)
+    if (CLLocationCoordinate2DIsValid(location.coordinate) && location.timestamp && timeInterval < timeIntervalForLocationToBeConsideredFresh)
     {
-        self.location = [locations lastObject];
+        self.location = location;
         [self executeLocationCallbacks];
         [self stopLocationCallbackTimeoutTimer];
     }

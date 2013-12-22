@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class PFUser;
+
 extern NSString * const JJParseManagerUserLogInCompleteNotification;
 
 // Those who observe this notification will receive a dictionary of the latest data from the cloud when this is posted
@@ -18,8 +20,6 @@ typedef void (^JJParseManagerCallback)(BOOL succeeded, NSError *error);
 @interface JJParseManager : NSObject
 
 + (JJParseManager *)sharedManager;
-
-- (BOOL)isUserLoggedIn;
 
 - (void)trackAppOpenedWithLaunchOptions:(NSDictionary *)launchOptions;
 

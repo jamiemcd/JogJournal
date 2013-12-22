@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class User;
+
 @interface JJCompletedJogsViewController : UITableViewController
+
+@property (nonatomic, strong) User *user;
 
 @end
