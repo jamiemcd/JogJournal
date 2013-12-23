@@ -156,9 +156,9 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
 - (void)fetchJogsForUser:(User *)user withCallback:(JJParseManagerFetchJogsForUserCallback)callback;
 {
     // Only the current user can access their jogs, so do a quick check to make sure the user object passed in matches the current user logged into Parse
-    if (user.parseObjectID != [PFUser currentUser].objectId)
+    if (![user.parseObjectID isEqualToString:[PFUser currentUser].objectId])
     {
-//        return;
+        return;
     }
     
     PFQuery *query = [PFQuery queryWithClassName:JJJogClassKey];
@@ -196,7 +196,7 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
 - (void)saveJogsForUser:(User *)user
 {
     // Only the current user can save jogs, so do a quick check to make sure the user object passed in matches the current user logged into Parse
-    if (user.parseObjectID != [PFUser currentUser].objectId)
+    if (![user.parseObjectID isEqualToString:[PFUser currentUser].objectId])
     {
         return;
     }

@@ -168,7 +168,7 @@
     
     MKMapRect rect = MKMapRectUnion(swRect, neRect);
     
-    [self.mapView setVisibleMapRect:rect edgePadding:UIEdgeInsetsMake(20, 20, 20, 20) animated:YES];
+    [self.mapView setVisibleMapRect:rect edgePadding:UIEdgeInsetsMake(70, 20, 20, 20) animated:YES];
 }
 
 - (void)startButtonTouchHandler:(UIBarButtonItem *)barButtonItem
