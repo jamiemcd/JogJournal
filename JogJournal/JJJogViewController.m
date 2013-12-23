@@ -91,10 +91,17 @@
         [self.mapView addOverlay:self.polyline level:MKOverlayLevelAboveRoads];
         if (locationsCount > 0)
         {
-            CLLocationCoordinate2D currentCoordinate = coordinatesArray[locationsCount - 1];
-        
-            MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currentCoordinate, 50, 50);
-            [self.mapView setRegion:region animated:YES];
+            if (jog.endDate)
+            {
+                [self zoomToBestZoomForCompletedJog];
+            }
+            else
+            {
+                CLLocationCoordinate2D currentCoordinate = coordinatesArray[locationsCount - 1];
+                
+                MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currentCoordinate, 50, 50);
+                [self.mapView setRegion:region animated:YES];
+            }
         }
         free(coordinatesArray);
     }
@@ -124,6 +131,44 @@
     self.viewConstraints = [constraints copy];
     [self.view addConstraints:self.viewConstraints];
 
+}
+
+- (void)zoomToBestZoomForCompletedJog
+{
+    CLLocationDegrees northernMostLatitude;
+    CLLocationDegrees southernMostLatitude;
+    CLLocationDegrees easternMostLongitude;
+    CLLocationDegrees westernMostLongitude;
+    
+    NSUInteger count = [self.jog.locations count];
+    for (int i = 0; i < count; i++)
+    {
+        Location *location = self.jog.locations[i];
+        if (i == 0)
+        {
+            northernMostLatitude = [location.latitude doubleValue];
+            southernMostLatitude = [location.latitude doubleValue];
+            easternMostLongitude = [location.longitude doubleValue];
+            westernMostLongitude = [location.longitude doubleValue];
+        }
+        else
+        {
+            northernMostLatitude = ([location.latitude doubleValue] > northernMostLatitude) ? [location.latitude doubleValue] : northernMostLatitude;
+            southernMostLatitude = ([location.latitude doubleValue] < southernMostLatitude) ? [location.latitude doubleValue] : southernMostLatitude;
+            easternMostLongitude = ([location.longitude doubleValue] > easternMostLongitude) ? [location.longitude doubleValue] : easternMostLongitude;
+            westernMostLongitude = ([location.longitude doubleValue] < westernMostLongitude) ? [location.longitude doubleValue] : westernMostLongitude;
+        }
+    }
+    
+    MKMapPoint swPoint = MKMapPointForCoordinate(CLLocationCoordinate2DMake(southernMostLatitude, westernMostLongitude));
+    MKMapRect swRect = MKMapRectMake(swPoint.x, swPoint.y, 0, 0);
+    
+    MKMapPoint nePoint = MKMapPointForCoordinate(CLLocationCoordinate2DMake(northernMostLatitude, easternMostLongitude));
+    MKMapRect neRect = MKMapRectMake(nePoint.x, nePoint.y, 0, 0);
+    
+    MKMapRect rect = MKMapRectUnion(swRect, neRect);
+    
+    [self.mapView setVisibleMapRect:rect edgePadding:UIEdgeInsetsMake(20, 20, 20, 20) animated:YES];
 }
 
 - (void)startButtonTouchHandler:(UIBarButtonItem *)barButtonItem
