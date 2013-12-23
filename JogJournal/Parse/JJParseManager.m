@@ -8,6 +8,10 @@
 
 #import "JJParseManager.h"
 #import <Parse/Parse.h>
+#import "User+AdditionalMethods.h"
+#import "Jog+AdditionalMethods.h"
+#import "Location+AdditionalMethods.h"
+#import "JJCoreDataManager.h"
 
 #pragma mark - App ID and Client Key
 
@@ -25,9 +29,22 @@ NSString *const JJUserFacebookNameKey = @"facebookName";
 NSString *const JJJogClassKey = @"Jog";
 
 // Field keys
+NSString *const JJJogUUIDKey = @"uuid";
 NSString *const JJJogUserKey = @"user";
 NSString *const JJJogStartDateKey = @"startDate";
-NSString *const JJJogCompletionDateKey = @"completionDate";
+NSString *const JJJogEndDateKey = @"endDate";
+NSString *const JJJogDistanceInMetersKey = @"distanceInMeters";
+NSString *const JJJogLocationsKey = @"locations";
+
+#pragma mark - Location Class
+// Class key
+NSString *const JJLocationClassKey = @"Location";
+
+// Field keys
+NSString *const JJLocationUUIDKey = @"uuid";
+NSString *const JJLocationLatitudeKey = @"latitude";
+NSString *const JJLocationLongitudeKey = @"longitude";
+NSString *const JJLocationTimestampKey = @"timestamp";
 
 @implementation JJParseManager
 
@@ -134,6 +151,120 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
 - (void)logOut
 {
     [PFUser logOut];
+}
+
+- (void)fetchJogsForUser:(User *)user withCallback:(JJParseManagerFetchJogsForUserCallback)callback;
+{
+    // Only the current user can access their jogs, so do a quick check to make sure the user object passed in matches the current user logged into Parse
+    if (user.parseObjectID != [PFUser currentUser].objectId)
+    {
+//        return;
+    }
+    
+    PFQuery *query = [PFQuery queryWithClassName:JJJogClassKey];
+    [query whereKey:JJJogUserKey equalTo:[PFUser currentUser]];
+    [query includeKey:JJJogLocationsKey];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSMutableArray *jogDictionaries = [NSMutableArray array];
+        for (PFObject *jogObject in objects)
+        {   NSMutableArray *locationDictionaries = [NSMutableArray array];
+            for (PFObject *locationObject in jogObject[JJJogLocationsKey])
+            {
+                NSDictionary *locationDictionary = @{ @"parseObjectID": locationObject.objectId,
+                                                      @"uuid": locationObject[JJLocationUUIDKey],
+                                                      @"latitude": locationObject[JJLocationLatitudeKey],
+                                                      @"longitude": locationObject[JJLocationLongitudeKey],
+                                                      @"timestamp": locationObject[JJLocationTimestampKey] };
+                [locationDictionaries addObject:locationDictionary];
+                
+            }
+            NSDictionary *jogDictionary = @{ @"parseObjectID": jogObject.objectId,
+                                             @"uuid": jogObject[JJJogUUIDKey],
+                                             @"distanceInMeters": jogObject[JJJogDistanceInMetersKey],
+                                             @"startDate": jogObject[JJJogStartDateKey],
+                                             @"endDate": jogObject[JJJogEndDateKey],
+                                             @"locations": locationDictionaries };
+            [jogDictionaries addObject:jogDictionary];
+        }
+        
+        
+        callback(jogDictionaries, error);
+    }];
+}
+
+- (void)saveJogsForUser:(User *)user
+{
+    // Only the current user can save jogs, so do a quick check to make sure the user object passed in matches the current user logged into Parse
+    if (user.parseObjectID != [PFUser currentUser].objectId)
+    {
+        return;
+    }
+    
+    // These dictionaries will have keys that are the Jog.uuid and Location.uuid
+    // This is so we can quickly set their parseObjectID property once the save is complete
+    NSMutableDictionary *jogsDictionary = [NSMutableDictionary dictionary];
+    NSMutableDictionary *locationsDictionary = [NSMutableDictionary dictionary];
+    
+    // First, we loop through the user's jogs. If a jog is complete, it will have a parseObjectID if it has already been saved to Parse.
+    NSMutableArray *completedJogsWithNoParseObjectID = [NSMutableArray array];
+    for (Jog *jog in user.jogs)
+    {
+        if (jog.endDate && !jog.parseObjectID)
+        {
+            [completedJogsWithNoParseObjectID addObject:jog];
+        }
+    }
+    
+    // The jogObjects array will contain PFObject instances for jogs
+    NSMutableArray *jogObjects = [NSMutableArray array];
+    
+    // The locationObjects array will contain PFObject instances for locations
+    NSMutableArray *locationObjects = [NSMutableArray array];
+    
+    for (Jog *jog in completedJogsWithNoParseObjectID)
+    {
+        jogsDictionary[jog.uuid] = jog;
+        PFObject *jogObject = [PFObject objectWithClassName:JJJogClassKey];
+        jogObject[JJJogUUIDKey] = jog.uuid;
+        jogObject[JJJogStartDateKey] = jog.startDate;
+        jogObject[JJJogEndDateKey] = jog.endDate;
+        jogObject[JJJogDistanceInMetersKey] = jog.distanceInMeters;
+        jogObject[JJJogUserKey] = [PFUser currentUser];
+        
+        for (Location *location in jog.locations)
+        {
+            locationsDictionary[location.uuid] = location;
+            PFObject *locationObject = [PFObject objectWithClassName:JJLocationClassKey];
+            locationObject[JJLocationUUIDKey] = location.uuid;
+            locationObject[JJLocationLatitudeKey] = location.latitude;
+            locationObject[JJLocationLongitudeKey] = location.longitude;
+            locationObject[JJLocationTimestampKey] = location.timestamp;
+            [locationObjects addObject:locationObject];
+        }
+        
+        jogObject[JJJogLocationsKey] = locationObjects;
+        [jogObjects addObject:jogObject];
+    }
+    
+    [PFObject saveAllInBackground:jogObjects block:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            for (PFObject *jogObject in jogObjects)
+            {
+                NSString *uuid = jogObject[JJJogUUIDKey];
+                Jog *jog = jogsDictionary[uuid];
+                jog.parseObjectID = jogObject.objectId;
+            }
+            for (PFObject *locationObject in locationObjects)
+            {
+                NSString *uuid = locationObject[JJLocationUUIDKey];
+                Location *location = locationsDictionary[uuid];
+                location.parseObjectID = locationObject.objectId;
+            }
+            [[JJCoreDataManager sharedManager] saveContext:NO];
+        }
+    }];
 }
 
 

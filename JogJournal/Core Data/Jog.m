@@ -16,6 +16,8 @@
 @dynamic distanceInMeters;
 @dynamic endDate;
 @dynamic startDate;
+@dynamic parseObjectID;
+@dynamic uuid;
 @dynamic locations;
 @dynamic user;
 

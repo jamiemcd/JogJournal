@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString * facebookID;
 @property (nonatomic, retain) NSData * facebookImage;
 @property (nonatomic, retain) NSString * facebookName;
+@property (nonatomic, retain) NSString * parseObjectID;
 @property (nonatomic, retain) NSOrderedSet *jogs;
 @end
 

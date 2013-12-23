@@ -16,6 +16,8 @@
 @property (nonatomic, retain) NSNumber * distanceInMeters;
 @property (nonatomic, retain) NSDate * endDate;
 @property (nonatomic, retain) NSDate * startDate;
+@property (nonatomic, retain) NSString * parseObjectID;
+@property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSOrderedSet *locations;
 @property (nonatomic, retain) User *user;
 @end

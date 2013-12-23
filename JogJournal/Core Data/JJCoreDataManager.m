@@ -135,7 +135,48 @@ NSString * const JJCoreDataManagerNewLocationAddedToActiveJog = @"JJCoreDataMana
 
 - (void)startUp
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(parseManagerUserLogInCompleteNotificationHandler:) name:JJParseManagerUserLogInCompleteNotification object:nil];
+}
 
+- (void)parseManagerUserLogInCompleteNotificationHandler:(NSNotification *)notification
+{
+    // Build a lookup dictionary of the user's jogs
+    User *user = self.currentUser;
+    NSMutableDictionary *userJogsDictionary = [NSMutableDictionary dictionary];
+    for (Jog *jog in user.jogs)
+    {
+        userJogsDictionary[jog.uuid] = jog;
+    }
+    
+    [[JJParseManager sharedManager] fetchJogsForUser:self.currentUser withCallback:^(NSArray *jogDictionaries, NSError *error) {
+        for (NSDictionary *jogDictionary in jogDictionaries)
+        {
+            // Check if the jog already exists in Core Data
+            NSString *uuid = jogDictionary[@"uuid"];
+            if (!userJogsDictionary[uuid])
+            {
+                Jog *jog = [NSEntityDescription insertNewObjectForEntityForName:@"Jog" inManagedObjectContext:self.mainManagedObjectContext];
+                jog.uuid = uuid;
+                jog.user = user;
+                jog.parseObjectID = jogDictionary[@"parseObjectID"];
+                jog.startDate = jogDictionary[@"startDate"];
+                jog.endDate = jogDictionary[@"endDate"];
+                jog.distanceInMeters = jogDictionary[@"distanceInMeters"];
+                NSArray *locations = jogDictionary[@"locations"];
+                for (NSDictionary *locationDictionary in locations)
+                {
+                    Location *location = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:self.mainManagedObjectContext];
+                    location.uuid = locationDictionary[@"uuid"];
+                    location.parseObjectID = locationDictionary[@"parseObjectID"];
+                    location.latitude = locationDictionary[@"latitude"];
+                    location.longitude = locationDictionary[@"longitude"];
+                    location.timestamp = locationDictionary[@"timestamp"];
+                    location.jog = jog;
+                }
+            }
+        }
+        [self saveContext:NO];
+    }];
 }
 
 - (User *)currentUser
@@ -170,6 +211,7 @@ NSString * const JJCoreDataManagerNewLocationAddedToActiveJog = @"JJCoreDataMana
         {
             // There is not a core data representation of the current Parse user, so we need to create one
             user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.mainManagedObjectContext];
+            user.parseObjectID = currentParseUser.objectId;
             user.email = currentParseUser.email;
             user.facebookID = currentParseUser[@"facebookID"];
             user.facebookName = currentParseUser[@"facebookName"];
@@ -182,6 +224,7 @@ NSString * const JJCoreDataManagerNewLocationAddedToActiveJog = @"JJCoreDataMana
 - (void)startNewJog
 {
     Jog *jog = [NSEntityDescription insertNewObjectForEntityForName:@"Jog" inManagedObjectContext:self.mainManagedObjectContext];
+    jog.uuid = [[NSUUID UUID] UUIDString];
     jog.user = self.currentUser;
     jog.startDate = [NSDate date];
     self.activeJog = jog;
@@ -193,7 +236,7 @@ NSString * const JJCoreDataManagerNewLocationAddedToActiveJog = @"JJCoreDataMana
             // Either This JJCoreDataManager no longer exists or the activeJog no longer exists, so stop continuous location updates.
             *stop = YES;
         }
-        if (requiredAccuracyMet)
+        else if (requiredAccuracyMet)
         {
             [weakSelf addLocationToActiveJog:location];
         }
@@ -222,12 +265,14 @@ NSString * const JJCoreDataManagerNewLocationAddedToActiveJog = @"JJCoreDataMana
     self.activeJog.distanceInMeters = @(distanceInMeters);
     
     [self saveContext:NO];
+    [[JJParseManager sharedManager] saveJogsForUser:self.activeJog.user];
     self.activeJog = nil;
 }
 
 - (void)addLocationToActiveJog:(CLLocation *)location
 {
     Location *jogLocation = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:self.mainManagedObjectContext];
+    jogLocation.uuid = [[NSUUID UUID] UUIDString];
     jogLocation.latitude = @(location.coordinate.latitude);
     jogLocation.longitude = @(location.coordinate.longitude);
     jogLocation.timestamp = location.timestamp;

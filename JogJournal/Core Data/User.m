@@ -16,6 +16,7 @@
 @dynamic facebookID;
 @dynamic facebookImage;
 @dynamic facebookName;
+@dynamic parseObjectID;
 @dynamic jogs;
 
 @end

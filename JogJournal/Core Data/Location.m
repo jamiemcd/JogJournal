@@ -15,6 +15,8 @@
 @dynamic latitude;
 @dynamic longitude;
 @dynamic timestamp;
+@dynamic parseObjectID;
+@dynamic uuid;
 @dynamic jog;
 
 @end

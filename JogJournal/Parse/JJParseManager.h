@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class PFUser;
+@class User;
 
 extern NSString * const JJParseManagerUserLogInCompleteNotification;
 
@@ -16,6 +17,7 @@ extern NSString * const JJParseManagerUserLogInCompleteNotification;
 extern NSString * const JJParseManagerFetchFromCloudCompleteNotification;
 
 typedef void (^JJParseManagerCallback)(BOOL succeeded, NSError *error);
+typedef void (^JJParseManagerFetchJogsForUserCallback)(NSArray *jogDictionaries, NSError *error);
 
 @interface JJParseManager : NSObject
 
@@ -32,5 +34,9 @@ typedef void (^JJParseManagerCallback)(BOOL succeeded, NSError *error);
 - (void)resetPasswordForEmail:(NSString *)email withCallback:(JJParseManagerCallback)callback;
 
 - (void)logOut;
+
+- (void)fetchJogsForUser:(User *)user withCallback:(JJParseManagerFetchJogsForUserCallback)callback;
+
+- (void)saveJogsForUser:(User *)user;
 
 @end

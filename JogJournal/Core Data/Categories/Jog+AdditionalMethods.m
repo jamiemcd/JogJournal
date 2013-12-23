@@ -45,4 +45,14 @@
     }
 }
 
+- (NSString *)averageSpeedString
+{
+    NSTimeInterval timeInterval = [self.endDate timeIntervalSinceDate:self.startDate];
+
+    double averageSpeedInMetersPerSecond = [self.distanceInMeters doubleValue] / timeInterval;
+    double averageSpeedInMilesPerHour = averageSpeedInMetersPerSecond * 2.23694;
+    
+    return [NSString stringWithFormat:@"%.02fmi/h", averageSpeedInMilesPerHour];
+}
+
 @end

@@ -12,5 +12,6 @@
 
 - (NSString *)durationString;
 - (NSString *)distanceString;
+- (NSString *)averageSpeedString;
 
 @end

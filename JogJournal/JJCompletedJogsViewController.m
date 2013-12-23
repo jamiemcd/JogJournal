@@ -10,6 +10,9 @@
 #import "User+AdditionalMethods.h"
 #import "Jog+AdditionalMethods.h"
 #import "JJJogViewController.h"
+#import "JJJogTableViewCell.h"
+#import "UIFont+Custom.h"
+#import "UIColor+Custom.h"
 
 @interface JJCompletedJogsViewController ()
 
@@ -36,7 +39,7 @@ static NSString *TableViewCellReuseIdentifer = @"TableViewCellReuseIdentifer";
 {
     [super viewDidLoad];
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:TableViewCellReuseIdentifer];
+    [self.tableView registerClass:[JJJogTableViewCell class] forCellReuseIdentifier:TableViewCellReuseIdentifer];
 }
 
 - (void)setUser:(User *)user
@@ -74,7 +77,28 @@ static NSString *TableViewCellReuseIdentifer = @"TableViewCellReuseIdentifer";
     // Configure the cell...
     Jog *jog = self.jogs[indexPath.row];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [jog distanceString], [jog durationString]];
+    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] init];
+    
+    UIFont *font = [UIFont lightAppFontOfSize:16];
+    UIColor *color = [UIColor blackColor];
+    NSDictionary *attributes = @{ NSFontAttributeName: font, NSForegroundColorAttributeName: color };
+    NSAttributedString *attributedString1 = [[NSAttributedString alloc] initWithString:@"Distance:" attributes:attributes];
+    NSAttributedString *attributedString3 = [[NSAttributedString alloc] initWithString:@"  Time:" attributes:attributes];
+    
+    font = [UIFont boldAppFontOfSize:16];
+    color = [UIColor greenColor];
+    attributes = @{ NSFontAttributeName: font, NSForegroundColorAttributeName: color };
+    NSAttributedString *attributedString2 = [[NSAttributedString alloc] initWithString:[jog distanceString] attributes:attributes];
+    NSAttributedString *attributedString4 = [[NSAttributedString alloc] initWithString:[jog durationString] attributes:attributes];
+    
+    [mutableAttributedString appendAttributedString:attributedString1];
+    [mutableAttributedString appendAttributedString:attributedString2];
+    [mutableAttributedString appendAttributedString:attributedString3];
+    [mutableAttributedString appendAttributedString:attributedString4];
+    
+    cell.textLabel.attributedText = mutableAttributedString;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Average Speed: %@", [jog averageSpeedString]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }

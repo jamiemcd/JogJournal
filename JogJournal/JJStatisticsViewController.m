@@ -10,6 +10,8 @@
 
 @interface JJStatisticsViewController ()
 
+@property (nonatomic, strong) UILabel *label;
+
 @property (nonatomic, strong) NSArray *viewConstraints;
 
 @end
@@ -36,6 +38,13 @@
 {
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.label = [[UILabel alloc] init];
+    [self.label setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.label.textAlignment = NSTextAlignmentCenter;
+    self.label.textColor = [UIColor blackColor];
+    self.label.numberOfLines = 0;
+    self.label.text = @"Upgrade to full edition of Jog Journal for Jog Statistics.";
+    [self.view addSubview:self.label];
     
     [self.view setNeedsUpdateConstraints];
 }
@@ -49,17 +58,14 @@
         [self.view removeConstraints:self.viewConstraints];
     }
     
-    /*
-    NSDictionary *views = @{ @"mapView": self.mapView };
+    NSDictionary *views = @{ @"label": self.label };
     
     NSMutableArray *constraints = [NSMutableArray array];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[mapView]|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[mapView]|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label]-|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-120-[label]" options:0 metrics:nil views:views]];
     
     self.viewConstraints = [constraints copy];
     [self.view addConstraints:self.viewConstraints];
-     */
-    
 }
 
 

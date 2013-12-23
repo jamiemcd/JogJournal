@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FDB1A8B71867823C009C9643 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8B61867823C009C9643 /* Location.m */; };
-		FDB1A8BA1867823D009C9643 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8B91867823D009C9643 /* User.m */; };
-		FDB1A8BD1867823D009C9643 /* Jog.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8BC1867823D009C9643 /* Jog.m */; };
+		FDB1A8D21867C006009C9643 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8D11867C006009C9643 /* Location.m */; };
+		FDB1A8D51867C006009C9643 /* Jog.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8D41867C006009C9643 /* Jog.m */; };
+		FDB1A8D81867C172009C9643 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8D71867C172009C9643 /* User.m */; };
+		FDB1A8DB1868C0C9009C9643 /* JJJogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8DA1868C0C9009C9643 /* JJJogTableViewCell.m */; };
 		FDC51F3E1860AAA8006B5E77 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F3D1860AAA8006B5E77 /* Foundation.framework */; };
 		FDC51F401860AAA8006B5E77 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F3F1860AAA8006B5E77 /* CoreGraphics.framework */; };
 		FDC51F421860AAA8006B5E77 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F411860AAA8006B5E77 /* UIKit.framework */; };
@@ -69,12 +70,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FDB1A8B51867823C009C9643 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Core Data/Location.h"; sourceTree = "<group>"; };
-		FDB1A8B61867823C009C9643 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Core Data/Location.m"; sourceTree = "<group>"; };
-		FDB1A8B81867823D009C9643 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = "Core Data/User.h"; sourceTree = "<group>"; };
-		FDB1A8B91867823D009C9643 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = "Core Data/User.m"; sourceTree = "<group>"; };
-		FDB1A8BB1867823D009C9643 /* Jog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Jog.h; path = "Core Data/Jog.h"; sourceTree = "<group>"; };
-		FDB1A8BC1867823D009C9643 /* Jog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Jog.m; path = "Core Data/Jog.m"; sourceTree = "<group>"; };
+		FDB1A8D01867C006009C9643 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Core Data/Location.h"; sourceTree = "<group>"; };
+		FDB1A8D11867C006009C9643 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Core Data/Location.m"; sourceTree = "<group>"; };
+		FDB1A8D31867C006009C9643 /* Jog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Jog.h; path = "Core Data/Jog.h"; sourceTree = "<group>"; };
+		FDB1A8D41867C006009C9643 /* Jog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Jog.m; path = "Core Data/Jog.m"; sourceTree = "<group>"; };
+		FDB1A8D61867C172009C9643 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = "Core Data/User.h"; sourceTree = "<group>"; };
+		FDB1A8D71867C172009C9643 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = "Core Data/User.m"; sourceTree = "<group>"; };
+		FDB1A8D91868C0C9009C9643 /* JJJogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJJogTableViewCell.h; sourceTree = "<group>"; };
+		FDB1A8DA1868C0C9009C9643 /* JJJogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJJogTableViewCell.m; sourceTree = "<group>"; };
 		FDC51F3A1860AAA8006B5E77 /* JogJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = JogJournal.app; path = "Jog Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDC51F3D1860AAA8006B5E77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FDC51F3F1860AAA8006B5E77 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -248,6 +251,8 @@
 				FDC51FA6186272FD006B5E77 /* Shared UI */,
 				FDC51F461860AAA8006B5E77 /* Supporting Files */,
 				FDC51FC71864FD33006B5E77 /* Vendor */,
+				FDB1A8D91868C0C9009C9643 /* JJJogTableViewCell.h */,
+				FDB1A8DA1868C0C9009C9643 /* JJJogTableViewCell.m */,
 			);
 			path = JogJournal;
 			sourceTree = "<group>";
@@ -296,13 +301,13 @@
 				FDC51FDD18661310006B5E77 /* Categories */,
 				FDC51F8D1860BE6A006B5E77 /* JJCoreDataManager.h */,
 				FDC51F8E1860BE6A006B5E77 /* JJCoreDataManager.m */,
+				FDB1A8D31867C006009C9643 /* Jog.h */,
+				FDB1A8D41867C006009C9643 /* Jog.m */,
 				FDC51F931860D5EE006B5E77 /* JogJournal.xcdatamodeld */,
-				FDB1A8BB1867823D009C9643 /* Jog.h */,
-				FDB1A8BC1867823D009C9643 /* Jog.m */,
-				FDB1A8B81867823D009C9643 /* User.h */,
-				FDB1A8B91867823D009C9643 /* User.m */,
-				FDB1A8B51867823C009C9643 /* Location.h */,
-				FDB1A8B61867823C009C9643 /* Location.m */,
+				FDB1A8D01867C006009C9643 /* Location.h */,
+				FDB1A8D11867C006009C9643 /* Location.m */,
+				FDB1A8D61867C172009C9643 /* User.h */,
+				FDB1A8D71867C172009C9643 /* User.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -490,7 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDB1A8BD1867823D009C9643 /* Jog.m in Sources */,
+				FDB1A8D51867C006009C9643 /* Jog.m in Sources */,
 				FDC51F8A1860BA79006B5E77 /* JJParseManager.m in Sources */,
 				FDC51FB61863747C006B5E77 /* JJEmailSignUpViewController.m in Sources */,
 				FDC51FE318661363006B5E77 /* Jog+AdditionalMethods.m in Sources */,
@@ -498,15 +503,16 @@
 				FDC51F501860AAA8006B5E77 /* JJAppDelegate.m in Sources */,
 				FDC51FA518624FDB006B5E77 /* UIFont+Custom.m in Sources */,
 				FDC51FC61864F6B7006B5E77 /* JJStatisticsViewController.m in Sources */,
+				FDB1A8D81867C172009C9643 /* User.m in Sources */,
 				FDC51FCE1864FD33006B5E77 /* SVProgressHUD.m in Sources */,
-				FDB1A8BA1867823D009C9643 /* User.m in Sources */,
 				FDC51F4C1860AAA8006B5E77 /* main.m in Sources */,
 				FDC51F8F1860BE6A006B5E77 /* JJCoreDataManager.m in Sources */,
 				FDC51F921860C1AA006B5E77 /* JJMainViewController.m in Sources */,
 				FDC51FA418624FDB006B5E77 /* UIColor+Custom.m in Sources */,
 				FDC51FB3186344BF006B5E77 /* JJWelcomeViewController.m in Sources */,
+				FDB1A8D21867C006009C9643 /* Location.m in Sources */,
 				FDC51FE618661383006B5E77 /* Location+AdditionalMethods.m in Sources */,
-				FDB1A8B71867823C009C9643 /* Location.m in Sources */,
+				FDB1A8DB1868C0C9009C9643 /* JJJogTableViewCell.m in Sources */,
 				FDC51F951860D5EE006B5E77 /* JogJournal.xcdatamodeld in Sources */,
 				FDC51FBD1864A545006B5E77 /* JJLocationManager.m in Sources */,
 				FDC51FA9186274C1006B5E77 /* JJButton.m in Sources */,

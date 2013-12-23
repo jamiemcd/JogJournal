@@ -16,6 +16,8 @@
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSDate * timestamp;
+@property (nonatomic, retain) NSString * parseObjectID;
+@property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) Jog *jog;
 
 @end
