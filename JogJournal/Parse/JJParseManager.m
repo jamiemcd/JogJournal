@@ -216,10 +216,10 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
         }
     }
     
-    // The jogObjects array will contain PFObject instances for jogs
+    // The jogObjects array will contain PFObject instances for all the jogs being saved to Parse
     NSMutableArray *jogObjects = [NSMutableArray array];
     
-    // The locationObjects array will contain PFObject instances for locations
+    // The locationObjects array will contain PFObject instances for locations being saved to Parse
     NSMutableArray *locationObjects = [NSMutableArray array];
     
     for (Jog *jog in completedJogsWithNoParseObjectID)
@@ -232,6 +232,8 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
         jogObject[JJJogDistanceInMetersKey] = jog.distanceInMeters;
         jogObject[JJJogUserKey] = [PFUser currentUser];
         
+        // The jogLocationObjects array will contain the PFObject instances for locations specific to the jogObject being created
+        NSMutableArray *jogLocationObjects = [NSMutableArray array];
         for (Location *location in jog.locations)
         {
             locationsDictionary[location.uuid] = location;
@@ -240,10 +242,11 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
             locationObject[JJLocationLatitudeKey] = location.latitude;
             locationObject[JJLocationLongitudeKey] = location.longitude;
             locationObject[JJLocationTimestampKey] = location.timestamp;
+            [jogLocationObjects addObject:locationObject];
             [locationObjects addObject:locationObject];
         }
         
-        jogObject[JJJogLocationsKey] = locationObjects;
+        jogObject[JJJogLocationsKey] = jogLocationObjects;
         [jogObjects addObject:jogObject];
     }
     

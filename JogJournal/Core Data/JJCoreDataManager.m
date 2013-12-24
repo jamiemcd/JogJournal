@@ -149,6 +149,7 @@ NSString * const JJCoreDataManagerNewLocationAddedToActiveJog = @"JJCoreDataMana
     }
     
     [[JJParseManager sharedManager] fetchJogsForUser:self.currentUser withCallback:^(NSArray *jogDictionaries, NSError *error) {
+        //NSLog(@"%@", jogDictionaries);
         for (NSDictionary *jogDictionary in jogDictionaries)
         {
             // Check if the jog already exists in Core Data
