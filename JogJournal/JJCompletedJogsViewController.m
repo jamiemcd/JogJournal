@@ -48,12 +48,15 @@ static NSString *TableViewCellReuseIdentifer = @"TableViewCellReuseIdentifer";
     NSMutableArray *jogs = [NSMutableArray array];
     for (Jog *jog in _user.jogs)
     {
+        // Only completed jogs get added
         if (jog.endDate)
         {
             [jogs addObject:jog];
         }
     }
-    self.jogs = [jogs copy];
+    // Now sort the array so that jogs that were completed more recent are listed first
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"endDate" ascending:NO];
+    self.jogs = [jogs sortedArrayUsingDescriptors:@[sortDescriptor]];
     
     [self.tableView reloadData];
 }

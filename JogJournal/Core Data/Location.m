@@ -2,8 +2,8 @@
 //  Location.m
 //  JogJournal
 //
-//  Created by Jamie McDaniel on 12/22/13.
-//  Copyright (c) 2013 Curious Find. All rights reserved.
+//  Created by Jamie McDaniel on 1/3/14.
+//  Copyright (c) 2014 Curious Find. All rights reserved.
 //
 
 #import "Location.h"
@@ -13,10 +13,8 @@
 @implementation Location
 
 @dynamic latitude;
-@dynamic longitude;
 @dynamic timestamp;
-@dynamic parseObjectID;
-@dynamic uuid;
+@dynamic longitude;
 @dynamic jog;
 
 @end

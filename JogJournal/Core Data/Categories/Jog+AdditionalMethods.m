@@ -19,15 +19,15 @@
     NSInteger seconds = duration % 60;
     if (hours > 0)
     {
-        return [NSString stringWithFormat:@"%02ih %02im %02is", hours, minutes, seconds];
+        return [NSString stringWithFormat:@"%02lih %02lim %02lis", (long)hours, (long)minutes, (long)seconds];
     }
     else if (minutes > 0)
     {
-        return [NSString stringWithFormat:@"%02im %02is", minutes, seconds];
+        return [NSString stringWithFormat:@"%02lim %02lis", (long)minutes, (long)seconds];
     }
     else
     {
-        return [NSString stringWithFormat:@"%02is", seconds];
+        return [NSString stringWithFormat:@"%02lis", (long)seconds];
     }
 }
 

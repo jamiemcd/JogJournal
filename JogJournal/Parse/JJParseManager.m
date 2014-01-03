@@ -12,6 +12,7 @@
 #import "Jog+AdditionalMethods.h"
 #import "Location+AdditionalMethods.h"
 #import "JJCoreDataManager.h"
+#import "CBLJSON.h"
 
 #pragma mark - App ID and Client Key
 
@@ -34,21 +35,16 @@ NSString *const JJJogUserKey = @"user";
 NSString *const JJJogStartDateKey = @"startDate";
 NSString *const JJJogEndDateKey = @"endDate";
 NSString *const JJJogDistanceInMetersKey = @"distanceInMeters";
-NSString *const JJJogLocationsKey = @"locations";
+NSString *const JJJogLocationsFileKey = @"locationsFile";
 
-#pragma mark - Location Class
-// Class key
-NSString *const JJLocationClassKey = @"Location";
-
-// Field keys
-NSString *const JJLocationUUIDKey = @"uuid";
+// Keys for locationsFile JSON data
 NSString *const JJLocationLatitudeKey = @"latitude";
 NSString *const JJLocationLongitudeKey = @"longitude";
 NSString *const JJLocationTimestampKey = @"timestamp";
 
 @implementation JJParseManager
 
-NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerUserLogInCompleteNotification";
+NSString * const JJParseManagerUserLogInCompleteNotification = @"com.curiousfind.jogjournal.JJParseManagerUserLogInCompleteNotification";
 
 + (JJParseManager *)sharedManager
 {
@@ -163,33 +159,45 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
     
     PFQuery *query = [PFQuery queryWithClassName:JJJogClassKey];
     [query whereKey:JJJogUserKey equalTo:[PFUser currentUser]];
-    [query includeKey:JJJogLocationsKey];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        // We will build an array of dictionaries. Each dictionary contains all the information about a jog.
+        // We will then execute the callback, passing in the array of dictionaries as an argument. We could
+        // just pass in the array of PFObjects, but I like to keep all Parse classes contained within the
+        // ParseManager. That way if you ever need to switch BaaS (Backend as a Service) providers, it should be easier.
         NSMutableArray *jogDictionaries = [NSMutableArray array];
+        NSUInteger jogObjectsCount = [objects count];
+        __block NSUInteger jogObjectsLocationDataFetchCount = 0;
         for (PFObject *jogObject in objects)
-        {   NSMutableArray *locationDictionaries = [NSMutableArray array];
-            for (PFObject *locationObject in jogObject[JJJogLocationsKey])
-            {
-                NSDictionary *locationDictionary = @{ @"parseObjectID": locationObject.objectId,
-                                                      @"uuid": locationObject[JJLocationUUIDKey],
-                                                      @"latitude": locationObject[JJLocationLatitudeKey],
-                                                      @"longitude": locationObject[JJLocationLongitudeKey],
-                                                      @"timestamp": locationObject[JJLocationTimestampKey] };
-                [locationDictionaries addObject:locationDictionary];
+        {
+            PFFile *locationsFile = jogObject[JJJogLocationsFileKey];
+            [locationsFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                jogObjectsLocationDataFetchCount++;
+                NSError *jsonError = nil;
+                NSArray *parseLocationDictionaries = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                NSMutableArray *locationDictionaries = [NSMutableArray array];
+                for (NSDictionary *parseLocationDictionary in parseLocationDictionaries)
+                {
+                    NSDate *timestamp = [CBLJSON dateWithJSONObject:parseLocationDictionary[@"timestamp"]];
+                    NSDictionary *locationDictionary = @{ @"latitude": parseLocationDictionary[@"latitude"],
+                                                          @"longitude": parseLocationDictionary[@"longitude"],
+                                                          @"timestamp": timestamp };
+                    [locationDictionaries addObject:locationDictionary];
+                }
+                NSDictionary *jogDictionary = @{ @"parseObjectID": jogObject.objectId,
+                                                 @"uuid": jogObject[JJJogUUIDKey],
+                                                 @"distanceInMeters": jogObject[JJJogDistanceInMetersKey],
+                                                 @"startDate": jogObject[JJJogStartDateKey],
+                                                 @"endDate": jogObject[JJJogEndDateKey],
+                                                 @"locations": locationDictionaries };
                 
-            }
-            NSDictionary *jogDictionary = @{ @"parseObjectID": jogObject.objectId,
-                                             @"uuid": jogObject[JJJogUUIDKey],
-                                             @"distanceInMeters": jogObject[JJJogDistanceInMetersKey],
-                                             @"startDate": jogObject[JJJogStartDateKey],
-                                             @"endDate": jogObject[JJJogEndDateKey],
-                                             @"locations": locationDictionaries };
-            [jogDictionaries addObject:jogDictionary];
+                [jogDictionaries addObject:jogDictionary];
+                if (jogObjectsLocationDataFetchCount == jogObjectsCount)
+                {
+                    callback(jogDictionaries, error);
+                }
+            }];
         }
-        
-        
-        callback(jogDictionaries, error);
     }];
 }
 
@@ -201,10 +209,10 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
         return;
     }
     
-    // These dictionaries will have keys that are the Jog.uuid and Location.uuid
-    // This is so we can quickly set their parseObjectID property once the save is complete
+    // This dictionary will have key-value pairs where the key is Jog.uuid and the value is the full Jog object.
+    // This is so we can quickly set the Jog.parseObjectID property once the save is complete, without having to
+    // loop over an array searching for the correct Jog
     NSMutableDictionary *jogsDictionary = [NSMutableDictionary dictionary];
-    NSMutableDictionary *locationsDictionary = [NSMutableDictionary dictionary];
     
     // First, we loop through the user's jogs. If a jog is complete, it will have a parseObjectID if it has already been saved to Parse.
     NSMutableArray *completedJogsWithNoParseObjectID = [NSMutableArray array];
@@ -219,9 +227,6 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
     // The jogObjects array will contain PFObject instances for all the jogs being saved to Parse
     NSMutableArray *jogObjects = [NSMutableArray array];
     
-    // The locationObjects array will contain PFObject instances for locations being saved to Parse
-    NSMutableArray *locationObjects = [NSMutableArray array];
-    
     for (Jog *jog in completedJogsWithNoParseObjectID)
     {
         jogsDictionary[jog.uuid] = jog;
@@ -232,21 +237,23 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
         jogObject[JJJogDistanceInMetersKey] = jog.distanceInMeters;
         jogObject[JJJogUserKey] = [PFUser currentUser];
         
-        // The jogLocationObjects array will contain the PFObject instances for locations specific to the jogObject being created
-        NSMutableArray *jogLocationObjects = [NSMutableArray array];
+        // The jogLocationDictionaries array will contain dictionaries where each dictionary contains the information for a Location
+        NSMutableArray *jogLocationDictionaries = [NSMutableArray array];
         for (Location *location in jog.locations)
         {
-            locationsDictionary[location.uuid] = location;
-            PFObject *locationObject = [PFObject objectWithClassName:JJLocationClassKey];
-            locationObject[JJLocationUUIDKey] = location.uuid;
-            locationObject[JJLocationLatitudeKey] = location.latitude;
-            locationObject[JJLocationLongitudeKey] = location.longitude;
-            locationObject[JJLocationTimestampKey] = location.timestamp;
-            [jogLocationObjects addObject:locationObject];
-            [locationObjects addObject:locationObject];
+            NSMutableDictionary *locationDictionary = [NSMutableDictionary dictionary];
+            locationDictionary[JJLocationLatitudeKey] = location.latitude;
+            locationDictionary[JJLocationLongitudeKey] = location.longitude;
+            locationDictionary[JJLocationTimestampKey] = [CBLJSON JSONObjectWithDate:location.timestamp];
+            [jogLocationDictionaries addObject:locationDictionary];
         }
         
-        jogObject[JJJogLocationsKey] = jogLocationObjects;
+        // Now convert the jogLocationDictionaries array into JSON to store as a PFFile
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jogLocationDictionaries options:0 error:&error];
+        PFFile *file = [PFFile fileWithName:@"locations.json" data:jsonData];
+        
+        jogObject[JJJogLocationsFileKey] = file;
         [jogObjects addObject:jogObject];
     }
     
@@ -258,12 +265,6 @@ NSString * const JJParseManagerUserLogInCompleteNotification = @"JJParseManagerU
                 NSString *uuid = jogObject[JJJogUUIDKey];
                 Jog *jog = jogsDictionary[uuid];
                 jog.parseObjectID = jogObject.objectId;
-            }
-            for (PFObject *locationObject in locationObjects)
-            {
-                NSString *uuid = locationObject[JJLocationUUIDKey];
-                Location *location = locationsDictionary[uuid];
-                location.parseObjectID = locationObject.objectId;
             }
             [[JJCoreDataManager sharedManager] saveContext:NO];
         }

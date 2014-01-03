@@ -13,9 +13,6 @@
 
 extern NSString * const JJParseManagerUserLogInCompleteNotification;
 
-// Those who observe this notification will receive a dictionary of the latest data from the cloud when this is posted
-extern NSString * const JJParseManagerFetchFromCloudCompleteNotification;
-
 typedef void (^JJParseManagerCallback)(BOOL succeeded, NSError *error);
 typedef void (^JJParseManagerFetchJogsForUserCallback)(NSArray *jogDictionaries, NSError *error);
 
