@@ -7,23 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FD1E238818773C5E0039B562 /* JJConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1E238718773C5E0039B562 /* JJConstants.m */; };
+		FD1E238818773C5E0039B562 /* CFXConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1E238718773C5E0039B562 /* CFXConstants.m */; };
 		FD1E238B187764710039B562 /* JogJournal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD1E2389187764710039B562 /* JogJournal.xcdatamodeld */; };
-		FD1E2397187769740039B562 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1E2396187769740039B562 /* Location.m */; };
-		FD1E239A187769740039B562 /* Jog.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1E2399187769740039B562 /* Jog.m */; };
-		FD1E239D187769740039B562 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1E239C187769740039B562 /* User.m */; };
 		FD7AA4441873390E00DA1814 /* CBLBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7AA43F1873390E00DA1814 /* CBLBase64.m */; };
 		FD7AA4451873390E00DA1814 /* CBLJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7AA4411873390E00DA1814 /* CBLJSON.m */; };
 		FD7AA4461873390E00DA1814 /* CBLParseDate.c in Sources */ = {isa = PBXBuildFile; fileRef = FD7AA4421873390E00DA1814 /* CBLParseDate.c */; };
 		FD7AA44818733A2B00DA1814 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7AA44718733A2B00DA1814 /* libsqlite3.dylib */; };
-		FDB1A8DB1868C0C9009C9643 /* JJJogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8DA1868C0C9009C9643 /* JJJogTableViewCell.m */; };
+		FDA85FC518788021007DDEEA /* CFXJog.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA85FC418788021007DDEEA /* CFXJog.m */; };
+		FDA85FC818788022007DDEEA /* CFXLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA85FC718788022007DDEEA /* CFXLocation.m */; };
+		FDA85FCB18788022007DDEEA /* CFXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA85FCA18788022007DDEEA /* CFXUser.m */; };
+		FDA85FCD18788C7C007DDEEA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA85FCC18788C7C007DDEEA /* libz.dylib */; };
+		FDB1A8DB1868C0C9009C9643 /* CFXJogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB1A8DA1868C0C9009C9643 /* CFXJogTableViewCell.m */; };
 		FDC51F3E1860AAA8006B5E77 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F3D1860AAA8006B5E77 /* Foundation.framework */; };
 		FDC51F401860AAA8006B5E77 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F3F1860AAA8006B5E77 /* CoreGraphics.framework */; };
 		FDC51F421860AAA8006B5E77 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F411860AAA8006B5E77 /* UIKit.framework */; };
 		FDC51F441860AAA8006B5E77 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F431860AAA8006B5E77 /* CoreData.framework */; };
 		FDC51F4A1860AAA8006B5E77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDC51F481860AAA8006B5E77 /* InfoPlist.strings */; };
 		FDC51F4C1860AAA8006B5E77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F4B1860AAA8006B5E77 /* main.m */; };
-		FDC51F501860AAA8006B5E77 /* JJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F4F1860AAA8006B5E77 /* JJAppDelegate.m */; };
+		FDC51F501860AAA8006B5E77 /* CFXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F4F1860AAA8006B5E77 /* CFXAppDelegate.m */; };
 		FDC51F551860AAA8006B5E77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDC51F541860AAA8006B5E77 /* Images.xcassets */; };
 		FDC51F5C1860AAA8006B5E77 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F5B1860AAA8006B5E77 /* XCTest.framework */; };
 		FDC51F5D1860AAA8006B5E77 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F3D1860AAA8006B5E77 /* Foundation.framework */; };
@@ -35,33 +36,32 @@
 		FDC51F771860B4A3006B5E77 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F761860B4A3006B5E77 /* AudioToolbox.framework */; };
 		FDC51F791860B4AE006B5E77 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F781860B4AE006B5E77 /* CFNetwork.framework */; };
 		FDC51F7B1860B4BD006B5E77 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F7A1860B4BD006B5E77 /* CoreLocation.framework */; };
-		FDC51F7D1860B4C7006B5E77 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F7C1860B4C7006B5E77 /* libz.1.1.3.dylib */; };
 		FDC51F7F1860B4D1006B5E77 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F7E1860B4D1006B5E77 /* MobileCoreServices.framework */; };
 		FDC51F811860B4DB006B5E77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F801860B4DB006B5E77 /* QuartzCore.framework */; };
 		FDC51F831860B4E4006B5E77 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F821860B4E4006B5E77 /* Security.framework */; };
 		FDC51F851860B4ED006B5E77 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F841860B4ED006B5E77 /* StoreKit.framework */; };
 		FDC51F871860B4F6006B5E77 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F861860B4F6006B5E77 /* SystemConfiguration.framework */; };
-		FDC51F8A1860BA79006B5E77 /* JJParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F891860BA79006B5E77 /* JJParseManager.m */; };
-		FDC51F8F1860BE6A006B5E77 /* JJCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F8E1860BE6A006B5E77 /* JJCoreDataManager.m */; };
-		FDC51F921860C1AA006B5E77 /* JJMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F911860C1AA006B5E77 /* JJMainViewController.m */; };
+		FDC51F8A1860BA79006B5E77 /* CFXParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F891860BA79006B5E77 /* CFXParseManager.m */; };
+		FDC51F8F1860BE6A006B5E77 /* CFXCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F8E1860BE6A006B5E77 /* CFXCoreDataManager.m */; };
+		FDC51F921860C1AA006B5E77 /* CFXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51F911860C1AA006B5E77 /* CFXMainViewController.m */; };
 		FDC51F9B18622229006B5E77 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51F9A18622229006B5E77 /* FacebookSDK.framework */; };
 		FDC51FA418624FDB006B5E77 /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FA118624FDB006B5E77 /* UIColor+Custom.m */; };
 		FDC51FA518624FDB006B5E77 /* UIFont+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FA318624FDB006B5E77 /* UIFont+Custom.m */; };
-		FDC51FA9186274C1006B5E77 /* JJButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FA8186274C1006B5E77 /* JJButton.m */; };
-		FDC51FB2186344BF006B5E77 /* JJEmailLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FAF186344BF006B5E77 /* JJEmailLogInViewController.m */; };
-		FDC51FB3186344BF006B5E77 /* JJWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB1186344BF006B5E77 /* JJWelcomeViewController.m */; };
-		FDC51FB61863747C006B5E77 /* JJEmailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB51863747C006B5E77 /* JJEmailSignUpViewController.m */; };
-		FDC51FB918637592006B5E77 /* JJEmailResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB818637592006B5E77 /* JJEmailResetPasswordController.m */; };
-		FDC51FBD1864A545006B5E77 /* JJLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FBC1864A545006B5E77 /* JJLocationManager.m */; };
-		FDC51FC01864DCF0006B5E77 /* JJJogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FBF1864DCF0006B5E77 /* JJJogViewController.m */; };
-		FDC51FC31864F63F006B5E77 /* JJCompletedJogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FC21864F63F006B5E77 /* JJCompletedJogsViewController.m */; };
-		FDC51FC61864F6B7006B5E77 /* JJStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FC51864F6B7006B5E77 /* JJStatisticsViewController.m */; };
+		FDC51FA9186274C1006B5E77 /* CFXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FA8186274C1006B5E77 /* CFXButton.m */; };
+		FDC51FB2186344BF006B5E77 /* CFXEmailLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FAF186344BF006B5E77 /* CFXEmailLogInViewController.m */; };
+		FDC51FB3186344BF006B5E77 /* CFXWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB1186344BF006B5E77 /* CFXWelcomeViewController.m */; };
+		FDC51FB61863747C006B5E77 /* CFXEmailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB51863747C006B5E77 /* CFXEmailSignUpViewController.m */; };
+		FDC51FB918637592006B5E77 /* CFXEmailResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FB818637592006B5E77 /* CFXEmailResetPasswordController.m */; };
+		FDC51FBD1864A545006B5E77 /* CFXLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FBC1864A545006B5E77 /* CFXLocationManager.m */; };
+		FDC51FC01864DCF0006B5E77 /* CFXJogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FBF1864DCF0006B5E77 /* CFXJogViewController.m */; };
+		FDC51FC31864F63F006B5E77 /* CFXCompletedJogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FC21864F63F006B5E77 /* CFXCompletedJogsViewController.m */; };
+		FDC51FC61864F6B7006B5E77 /* CFXStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FC51864F6B7006B5E77 /* CFXStatisticsViewController.m */; };
 		FDC51FCD1864FD33006B5E77 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FDC51FCA1864FD33006B5E77 /* SVProgressHUD.bundle */; };
 		FDC51FCE1864FD33006B5E77 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FCC1864FD33006B5E77 /* SVProgressHUD.m */; };
 		FDC51FD0186602A7006B5E77 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC51FCF186602A7006B5E77 /* MapKit.framework */; };
-		FDC51FDC18661302006B5E77 /* User+AdditionalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FDB18661302006B5E77 /* User+AdditionalMethods.m */; };
-		FDC51FE318661363006B5E77 /* Jog+AdditionalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FE218661363006B5E77 /* Jog+AdditionalMethods.m */; };
-		FDC51FE618661383006B5E77 /* Location+AdditionalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FE518661383006B5E77 /* Location+AdditionalMethods.m */; };
+		FDC51FDC18661302006B5E77 /* CFXUser+AdditionalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FDB18661302006B5E77 /* CFXUser+AdditionalMethods.m */; };
+		FDC51FE318661363006B5E77 /* CFXJog+AdditionalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FE218661363006B5E77 /* CFXJog+AdditionalMethods.m */; };
+		FDC51FE618661383006B5E77 /* CFXLocation+AdditionalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC51FE518661383006B5E77 /* CFXLocation+AdditionalMethods.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,15 +75,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FD1E238618773C5E0039B562 /* JJConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJConstants.h; sourceTree = "<group>"; };
-		FD1E238718773C5E0039B562 /* JJConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJConstants.m; sourceTree = "<group>"; };
+		FD1E238618773C5E0039B562 /* CFXConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CFXConstants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FD1E238718773C5E0039B562 /* CFXConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CFXConstants.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FD1E238A187764710039B562 /* JogJournal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JogJournal.xcdatamodel; sourceTree = "<group>"; };
-		FD1E2395187769740039B562 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Core Data/Location.h"; sourceTree = "<group>"; };
-		FD1E2396187769740039B562 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Core Data/Location.m"; sourceTree = "<group>"; };
-		FD1E2398187769740039B562 /* Jog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Jog.h; path = "Core Data/Jog.h"; sourceTree = "<group>"; };
-		FD1E2399187769740039B562 /* Jog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Jog.m; path = "Core Data/Jog.m"; sourceTree = "<group>"; };
-		FD1E239B187769740039B562 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = "Core Data/User.h"; sourceTree = "<group>"; };
-		FD1E239C187769740039B562 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = "Core Data/User.m"; sourceTree = "<group>"; };
 		FD7AA43E1873390E00DA1814 /* CBLBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBLBase64.h; sourceTree = "<group>"; };
 		FD7AA43F1873390E00DA1814 /* CBLBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLBase64.m; sourceTree = "<group>"; };
 		FD7AA4401873390E00DA1814 /* CBLJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBLJSON.h; sourceTree = "<group>"; };
@@ -91,8 +85,15 @@
 		FD7AA4421873390E00DA1814 /* CBLParseDate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CBLParseDate.c; sourceTree = "<group>"; };
 		FD7AA4431873390E00DA1814 /* CBLParseDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBLParseDate.h; sourceTree = "<group>"; };
 		FD7AA44718733A2B00DA1814 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		FDB1A8D91868C0C9009C9643 /* JJJogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJJogTableViewCell.h; sourceTree = "<group>"; };
-		FDB1A8DA1868C0C9009C9643 /* JJJogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJJogTableViewCell.m; sourceTree = "<group>"; };
+		FDA85FC318788021007DDEEA /* CFXJog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFXJog.h; path = "Core Data/CFXJog.h"; sourceTree = "<group>"; };
+		FDA85FC418788021007DDEEA /* CFXJog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFXJog.m; path = "Core Data/CFXJog.m"; sourceTree = "<group>"; };
+		FDA85FC618788022007DDEEA /* CFXLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFXLocation.h; path = "Core Data/CFXLocation.h"; sourceTree = "<group>"; };
+		FDA85FC718788022007DDEEA /* CFXLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFXLocation.m; path = "Core Data/CFXLocation.m"; sourceTree = "<group>"; };
+		FDA85FC918788022007DDEEA /* CFXUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFXUser.h; path = "Core Data/CFXUser.h"; sourceTree = "<group>"; };
+		FDA85FCA18788022007DDEEA /* CFXUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFXUser.m; path = "Core Data/CFXUser.m"; sourceTree = "<group>"; };
+		FDA85FCC18788C7C007DDEEA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		FDB1A8D91868C0C9009C9643 /* CFXJogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CFXJogTableViewCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDB1A8DA1868C0C9009C9643 /* CFXJogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CFXJogTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FDC51F3A1860AAA8006B5E77 /* Jog Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jog Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDC51F3D1860AAA8006B5E77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FDC51F3F1860AAA8006B5E77 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -102,8 +103,8 @@
 		FDC51F491860AAA8006B5E77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FDC51F4B1860AAA8006B5E77 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FDC51F4D1860AAA8006B5E77 /* JogJournal-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JogJournal-Prefix.pch"; sourceTree = "<group>"; };
-		FDC51F4E1860AAA8006B5E77 /* JJAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJAppDelegate.h; sourceTree = "<group>"; };
-		FDC51F4F1860AAA8006B5E77 /* JJAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJAppDelegate.m; sourceTree = "<group>"; };
+		FDC51F4E1860AAA8006B5E77 /* CFXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CFXAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51F4F1860AAA8006B5E77 /* CFXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CFXAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FDC51F541860AAA8006B5E77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FDC51F5A1860AAA8006B5E77 /* JogJournalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JogJournalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDC51F5B1860AAA8006B5E77 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -114,52 +115,51 @@
 		FDC51F761860B4A3006B5E77 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FDC51F781860B4AE006B5E77 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		FDC51F7A1860B4BD006B5E77 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		FDC51F7C1860B4C7006B5E77 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		FDC51F7E1860B4D1006B5E77 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		FDC51F801860B4DB006B5E77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FDC51F821860B4E4006B5E77 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FDC51F841860B4ED006B5E77 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FDC51F861860B4F6006B5E77 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		FDC51F881860BA79006B5E77 /* JJParseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJParseManager.h; path = Parse/JJParseManager.h; sourceTree = "<group>"; };
-		FDC51F891860BA79006B5E77 /* JJParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJParseManager.m; path = Parse/JJParseManager.m; sourceTree = "<group>"; };
-		FDC51F8D1860BE6A006B5E77 /* JJCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJCoreDataManager.h; path = "Core Data/JJCoreDataManager.h"; sourceTree = "<group>"; };
-		FDC51F8E1860BE6A006B5E77 /* JJCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJCoreDataManager.m; path = "Core Data/JJCoreDataManager.m"; sourceTree = "<group>"; };
-		FDC51F901860C1AA006B5E77 /* JJMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJMainViewController.h; sourceTree = "<group>"; };
-		FDC51F911860C1AA006B5E77 /* JJMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJMainViewController.m; sourceTree = "<group>"; };
+		FDC51F881860BA79006B5E77 /* CFXParseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CFXParseManager.h; path = Parse/CFXParseManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51F891860BA79006B5E77 /* CFXParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CFXParseManager.m; path = Parse/CFXParseManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDC51F8D1860BE6A006B5E77 /* CFXCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CFXCoreDataManager.h; path = "Core Data/CFXCoreDataManager.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51F8E1860BE6A006B5E77 /* CFXCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CFXCoreDataManager.m; path = "Core Data/CFXCoreDataManager.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDC51F901860C1AA006B5E77 /* CFXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CFXMainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51F911860C1AA006B5E77 /* CFXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CFXMainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FDC51F9A18622229006B5E77 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		FDC51FA018624FDB006B5E77 /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Custom.h"; sourceTree = "<group>"; };
 		FDC51FA118624FDB006B5E77 /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
 		FDC51FA218624FDB006B5E77 /* UIFont+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Custom.h"; sourceTree = "<group>"; };
 		FDC51FA318624FDB006B5E77 /* UIFont+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Custom.m"; sourceTree = "<group>"; };
-		FDC51FA7186274C1006B5E77 /* JJButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJButton.h; path = "Shared UI/JJButton.h"; sourceTree = "<group>"; };
-		FDC51FA8186274C1006B5E77 /* JJButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJButton.m; path = "Shared UI/JJButton.m"; sourceTree = "<group>"; };
-		FDC51FAE186344BF006B5E77 /* JJEmailLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJEmailLogInViewController.h; path = "Log In/JJEmailLogInViewController.h"; sourceTree = "<group>"; };
-		FDC51FAF186344BF006B5E77 /* JJEmailLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJEmailLogInViewController.m; path = "Log In/JJEmailLogInViewController.m"; sourceTree = "<group>"; };
-		FDC51FB0186344BF006B5E77 /* JJWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJWelcomeViewController.h; path = "Log In/JJWelcomeViewController.h"; sourceTree = "<group>"; };
-		FDC51FB1186344BF006B5E77 /* JJWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJWelcomeViewController.m; path = "Log In/JJWelcomeViewController.m"; sourceTree = "<group>"; };
-		FDC51FB41863747C006B5E77 /* JJEmailSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJEmailSignUpViewController.h; path = "Log In/JJEmailSignUpViewController.h"; sourceTree = "<group>"; };
-		FDC51FB51863747C006B5E77 /* JJEmailSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJEmailSignUpViewController.m; path = "Log In/JJEmailSignUpViewController.m"; sourceTree = "<group>"; };
-		FDC51FB718637592006B5E77 /* JJEmailResetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJEmailResetPasswordController.h; path = "Log In/JJEmailResetPasswordController.h"; sourceTree = "<group>"; };
-		FDC51FB818637592006B5E77 /* JJEmailResetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJEmailResetPasswordController.m; path = "Log In/JJEmailResetPasswordController.m"; sourceTree = "<group>"; };
-		FDC51FBB1864A545006B5E77 /* JJLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJLocationManager.h; path = "Core Location/JJLocationManager.h"; sourceTree = "<group>"; };
-		FDC51FBC1864A545006B5E77 /* JJLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJLocationManager.m; path = "Core Location/JJLocationManager.m"; sourceTree = "<group>"; };
-		FDC51FBE1864DCF0006B5E77 /* JJJogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJJogViewController.h; sourceTree = "<group>"; };
-		FDC51FBF1864DCF0006B5E77 /* JJJogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJJogViewController.m; sourceTree = "<group>"; };
-		FDC51FC11864F63F006B5E77 /* JJCompletedJogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCompletedJogsViewController.h; sourceTree = "<group>"; };
-		FDC51FC21864F63F006B5E77 /* JJCompletedJogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCompletedJogsViewController.m; sourceTree = "<group>"; };
-		FDC51FC41864F6B7006B5E77 /* JJStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJStatisticsViewController.h; sourceTree = "<group>"; };
-		FDC51FC51864F6B7006B5E77 /* JJStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJStatisticsViewController.m; sourceTree = "<group>"; };
+		FDC51FA7186274C1006B5E77 /* CFXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CFXButton.h; path = "Shared UI/CFXButton.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51FA8186274C1006B5E77 /* CFXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CFXButton.m; path = "Shared UI/CFXButton.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDC51FAE186344BF006B5E77 /* CFXEmailLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CFXEmailLogInViewController.h; path = "Log In/CFXEmailLogInViewController.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51FAF186344BF006B5E77 /* CFXEmailLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CFXEmailLogInViewController.m; path = "Log In/CFXEmailLogInViewController.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDC51FB0186344BF006B5E77 /* CFXWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CFXWelcomeViewController.h; path = "Log In/CFXWelcomeViewController.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51FB1186344BF006B5E77 /* CFXWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CFXWelcomeViewController.m; path = "Log In/CFXWelcomeViewController.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDC51FB41863747C006B5E77 /* CFXEmailSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CFXEmailSignUpViewController.h; path = "Log In/CFXEmailSignUpViewController.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51FB51863747C006B5E77 /* CFXEmailSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CFXEmailSignUpViewController.m; path = "Log In/CFXEmailSignUpViewController.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDC51FB718637592006B5E77 /* CFXEmailResetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CFXEmailResetPasswordController.h; path = "Log In/CFXEmailResetPasswordController.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51FB818637592006B5E77 /* CFXEmailResetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CFXEmailResetPasswordController.m; path = "Log In/CFXEmailResetPasswordController.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDC51FBB1864A545006B5E77 /* CFXLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CFXLocationManager.h; path = "Core Location/CFXLocationManager.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51FBC1864A545006B5E77 /* CFXLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CFXLocationManager.m; path = "Core Location/CFXLocationManager.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDC51FBE1864DCF0006B5E77 /* CFXJogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CFXJogViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51FBF1864DCF0006B5E77 /* CFXJogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CFXJogViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDC51FC11864F63F006B5E77 /* CFXCompletedJogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CFXCompletedJogsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51FC21864F63F006B5E77 /* CFXCompletedJogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CFXCompletedJogsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDC51FC41864F6B7006B5E77 /* CFXStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CFXStatisticsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FDC51FC51864F6B7006B5E77 /* CFXStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CFXStatisticsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FDC51FC91864FD33006B5E77 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		FDC51FCA1864FD33006B5E77 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		FDC51FCB1864FD33006B5E77 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		FDC51FCC1864FD33006B5E77 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		FDC51FCF186602A7006B5E77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		FDC51FDA18661302006B5E77 /* User+AdditionalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "User+AdditionalMethods.h"; path = "Core Data/Categories/User+AdditionalMethods.h"; sourceTree = "<group>"; };
-		FDC51FDB18661302006B5E77 /* User+AdditionalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "User+AdditionalMethods.m"; path = "Core Data/Categories/User+AdditionalMethods.m"; sourceTree = "<group>"; };
-		FDC51FE118661363006B5E77 /* Jog+AdditionalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Jog+AdditionalMethods.h"; path = "Core Data/Categories/Jog+AdditionalMethods.h"; sourceTree = "<group>"; };
-		FDC51FE218661363006B5E77 /* Jog+AdditionalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Jog+AdditionalMethods.m"; path = "Core Data/Categories/Jog+AdditionalMethods.m"; sourceTree = "<group>"; };
-		FDC51FE418661383006B5E77 /* Location+AdditionalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Location+AdditionalMethods.h"; path = "Core Data/Categories/Location+AdditionalMethods.h"; sourceTree = "<group>"; };
-		FDC51FE518661383006B5E77 /* Location+AdditionalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Location+AdditionalMethods.m"; path = "Core Data/Categories/Location+AdditionalMethods.m"; sourceTree = "<group>"; };
+		FDC51FDA18661302006B5E77 /* CFXUser+AdditionalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CFXUser+AdditionalMethods.h"; path = "Core Data/Categories/CFXUser+AdditionalMethods.h"; sourceTree = "<group>"; };
+		FDC51FDB18661302006B5E77 /* CFXUser+AdditionalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CFXUser+AdditionalMethods.m"; path = "Core Data/Categories/CFXUser+AdditionalMethods.m"; sourceTree = "<group>"; };
+		FDC51FE118661363006B5E77 /* CFXJog+AdditionalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CFXJog+AdditionalMethods.h"; path = "Core Data/Categories/CFXJog+AdditionalMethods.h"; sourceTree = "<group>"; };
+		FDC51FE218661363006B5E77 /* CFXJog+AdditionalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CFXJog+AdditionalMethods.m"; path = "Core Data/Categories/CFXJog+AdditionalMethods.m"; sourceTree = "<group>"; };
+		FDC51FE418661383006B5E77 /* CFXLocation+AdditionalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CFXLocation+AdditionalMethods.h"; path = "Core Data/Categories/CFXLocation+AdditionalMethods.h"; sourceTree = "<group>"; };
+		FDC51FE518661383006B5E77 /* CFXLocation+AdditionalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CFXLocation+AdditionalMethods.m"; path = "Core Data/Categories/CFXLocation+AdditionalMethods.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDA85FCD18788C7C007DDEEA /* libz.dylib in Frameworks */,
 				FD7AA44818733A2B00DA1814 /* libsqlite3.dylib in Frameworks */,
 				FDC51F871860B4F6006B5E77 /* SystemConfiguration.framework in Frameworks */,
 				FDC51F851860B4ED006B5E77 /* StoreKit.framework in Frameworks */,
@@ -174,7 +175,6 @@
 				FDC51F831860B4E4006B5E77 /* Security.framework in Frameworks */,
 				FDC51F811860B4DB006B5E77 /* QuartzCore.framework in Frameworks */,
 				FDC51F7F1860B4D1006B5E77 /* MobileCoreServices.framework in Frameworks */,
-				FDC51F7D1860B4C7006B5E77 /* libz.1.1.3.dylib in Frameworks */,
 				FDC51F7B1860B4BD006B5E77 /* CoreLocation.framework in Frameworks */,
 				FDC51F791860B4AE006B5E77 /* CFNetwork.framework in Frameworks */,
 				FDC51F771860B4A3006B5E77 /* AudioToolbox.framework in Frameworks */,
@@ -236,6 +236,7 @@
 		FDC51F3C1860AAA8006B5E77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FDA85FCC18788C7C007DDEEA /* libz.dylib */,
 				FD7AA44718733A2B00DA1814 /* libsqlite3.dylib */,
 				FDC51FCF186602A7006B5E77 /* MapKit.framework */,
 				FDC51F9A18622229006B5E77 /* FacebookSDK.framework */,
@@ -244,7 +245,6 @@
 				FDC51F821860B4E4006B5E77 /* Security.framework */,
 				FDC51F801860B4DB006B5E77 /* QuartzCore.framework */,
 				FDC51F7E1860B4D1006B5E77 /* MobileCoreServices.framework */,
-				FDC51F7C1860B4C7006B5E77 /* libz.1.1.3.dylib */,
 				FDC51F7A1860B4BD006B5E77 /* CoreLocation.framework */,
 				FDC51F781860B4AE006B5E77 /* CFNetwork.framework */,
 				FDC51F761860B4A3006B5E77 /* AudioToolbox.framework */,
@@ -265,20 +265,20 @@
 				FDC51F8C1860BDDF006B5E77 /* Core Data */,
 				FDC51FBA1864A522006B5E77 /* Core Location */,
 				FDC51F541860AAA8006B5E77 /* Images.xcassets */,
-				FDC51F4E1860AAA8006B5E77 /* JJAppDelegate.h */,
-				FDC51F4F1860AAA8006B5E77 /* JJAppDelegate.m */,
-				FDC51FC11864F63F006B5E77 /* JJCompletedJogsViewController.h */,
-				FDC51FC21864F63F006B5E77 /* JJCompletedJogsViewController.m */,
-				FD1E238618773C5E0039B562 /* JJConstants.h */,
-				FD1E238718773C5E0039B562 /* JJConstants.m */,
-				FDB1A8D91868C0C9009C9643 /* JJJogTableViewCell.h */,
-				FDB1A8DA1868C0C9009C9643 /* JJJogTableViewCell.m */,
-				FDC51FBE1864DCF0006B5E77 /* JJJogViewController.h */,
-				FDC51FBF1864DCF0006B5E77 /* JJJogViewController.m */,
-				FDC51F901860C1AA006B5E77 /* JJMainViewController.h */,
-				FDC51F911860C1AA006B5E77 /* JJMainViewController.m */,
-				FDC51FC41864F6B7006B5E77 /* JJStatisticsViewController.h */,
-				FDC51FC51864F6B7006B5E77 /* JJStatisticsViewController.m */,
+				FDC51F4E1860AAA8006B5E77 /* CFXAppDelegate.h */,
+				FDC51F4F1860AAA8006B5E77 /* CFXAppDelegate.m */,
+				FDC51FC11864F63F006B5E77 /* CFXCompletedJogsViewController.h */,
+				FDC51FC21864F63F006B5E77 /* CFXCompletedJogsViewController.m */,
+				FD1E238618773C5E0039B562 /* CFXConstants.h */,
+				FD1E238718773C5E0039B562 /* CFXConstants.m */,
+				FDB1A8D91868C0C9009C9643 /* CFXJogTableViewCell.h */,
+				FDB1A8DA1868C0C9009C9643 /* CFXJogTableViewCell.m */,
+				FDC51FBE1864DCF0006B5E77 /* CFXJogViewController.h */,
+				FDC51FBF1864DCF0006B5E77 /* CFXJogViewController.m */,
+				FDC51F901860C1AA006B5E77 /* CFXMainViewController.h */,
+				FDC51F911860C1AA006B5E77 /* CFXMainViewController.m */,
+				FDC51FC41864F6B7006B5E77 /* CFXStatisticsViewController.h */,
+				FDC51FC51864F6B7006B5E77 /* CFXStatisticsViewController.m */,
 				FDC51FAD186343F4006B5E77 /* Log In */,
 				FDC51F8B1860BA83006B5E77 /* Parse */,
 				FDC51FA6186272FD006B5E77 /* Shared UI */,
@@ -320,8 +320,8 @@
 		FDC51F8B1860BA83006B5E77 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
-				FDC51F881860BA79006B5E77 /* JJParseManager.h */,
-				FDC51F891860BA79006B5E77 /* JJParseManager.m */,
+				FDC51F881860BA79006B5E77 /* CFXParseManager.h */,
+				FDC51F891860BA79006B5E77 /* CFXParseManager.m */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -330,15 +330,15 @@
 			isa = PBXGroup;
 			children = (
 				FDC51FDD18661310006B5E77 /* Categories */,
-				FDC51F8D1860BE6A006B5E77 /* JJCoreDataManager.h */,
-				FDC51F8E1860BE6A006B5E77 /* JJCoreDataManager.m */,
+				FDC51F8D1860BE6A006B5E77 /* CFXCoreDataManager.h */,
+				FDC51F8E1860BE6A006B5E77 /* CFXCoreDataManager.m */,
 				FD1E2389187764710039B562 /* JogJournal.xcdatamodeld */,
-				FD1E239B187769740039B562 /* User.h */,
-				FD1E239C187769740039B562 /* User.m */,
-				FD1E2398187769740039B562 /* Jog.h */,
-				FD1E2399187769740039B562 /* Jog.m */,
-				FD1E2395187769740039B562 /* Location.h */,
-				FD1E2396187769740039B562 /* Location.m */,
+				FDA85FC318788021007DDEEA /* CFXJog.h */,
+				FDA85FC418788021007DDEEA /* CFXJog.m */,
+				FDA85FC618788022007DDEEA /* CFXLocation.h */,
+				FDA85FC718788022007DDEEA /* CFXLocation.m */,
+				FDA85FC918788022007DDEEA /* CFXUser.h */,
+				FDA85FCA18788022007DDEEA /* CFXUser.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -357,8 +357,8 @@
 		FDC51FA6186272FD006B5E77 /* Shared UI */ = {
 			isa = PBXGroup;
 			children = (
-				FDC51FA7186274C1006B5E77 /* JJButton.h */,
-				FDC51FA8186274C1006B5E77 /* JJButton.m */,
+				FDC51FA7186274C1006B5E77 /* CFXButton.h */,
+				FDC51FA8186274C1006B5E77 /* CFXButton.m */,
 			);
 			name = "Shared UI";
 			sourceTree = "<group>";
@@ -366,14 +366,14 @@
 		FDC51FAD186343F4006B5E77 /* Log In */ = {
 			isa = PBXGroup;
 			children = (
-				FDC51FAE186344BF006B5E77 /* JJEmailLogInViewController.h */,
-				FDC51FAF186344BF006B5E77 /* JJEmailLogInViewController.m */,
-				FDC51FB718637592006B5E77 /* JJEmailResetPasswordController.h */,
-				FDC51FB818637592006B5E77 /* JJEmailResetPasswordController.m */,
-				FDC51FB41863747C006B5E77 /* JJEmailSignUpViewController.h */,
-				FDC51FB51863747C006B5E77 /* JJEmailSignUpViewController.m */,
-				FDC51FB0186344BF006B5E77 /* JJWelcomeViewController.h */,
-				FDC51FB1186344BF006B5E77 /* JJWelcomeViewController.m */,
+				FDC51FAE186344BF006B5E77 /* CFXEmailLogInViewController.h */,
+				FDC51FAF186344BF006B5E77 /* CFXEmailLogInViewController.m */,
+				FDC51FB718637592006B5E77 /* CFXEmailResetPasswordController.h */,
+				FDC51FB818637592006B5E77 /* CFXEmailResetPasswordController.m */,
+				FDC51FB41863747C006B5E77 /* CFXEmailSignUpViewController.h */,
+				FDC51FB51863747C006B5E77 /* CFXEmailSignUpViewController.m */,
+				FDC51FB0186344BF006B5E77 /* CFXWelcomeViewController.h */,
+				FDC51FB1186344BF006B5E77 /* CFXWelcomeViewController.m */,
 			);
 			name = "Log In";
 			sourceTree = "<group>";
@@ -381,8 +381,8 @@
 		FDC51FBA1864A522006B5E77 /* Core Location */ = {
 			isa = PBXGroup;
 			children = (
-				FDC51FBB1864A545006B5E77 /* JJLocationManager.h */,
-				FDC51FBC1864A545006B5E77 /* JJLocationManager.m */,
+				FDC51FBB1864A545006B5E77 /* CFXLocationManager.h */,
+				FDC51FBC1864A545006B5E77 /* CFXLocationManager.m */,
 			);
 			name = "Core Location";
 			sourceTree = "<group>";
@@ -410,12 +410,12 @@
 		FDC51FDD18661310006B5E77 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				FDC51FE118661363006B5E77 /* Jog+AdditionalMethods.h */,
-				FDC51FE218661363006B5E77 /* Jog+AdditionalMethods.m */,
-				FDC51FE418661383006B5E77 /* Location+AdditionalMethods.h */,
-				FDC51FE518661383006B5E77 /* Location+AdditionalMethods.m */,
-				FDC51FDA18661302006B5E77 /* User+AdditionalMethods.h */,
-				FDC51FDB18661302006B5E77 /* User+AdditionalMethods.m */,
+				FDC51FE118661363006B5E77 /* CFXJog+AdditionalMethods.h */,
+				FDC51FE218661363006B5E77 /* CFXJog+AdditionalMethods.m */,
+				FDC51FE418661383006B5E77 /* CFXLocation+AdditionalMethods.h */,
+				FDC51FE518661383006B5E77 /* CFXLocation+AdditionalMethods.m */,
+				FDC51FDA18661302006B5E77 /* CFXUser+AdditionalMethods.h */,
+				FDC51FDB18661302006B5E77 /* CFXUser+AdditionalMethods.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -527,35 +527,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD1E239A187769740039B562 /* Jog.m in Sources */,
 				FD7AA4441873390E00DA1814 /* CBLBase64.m in Sources */,
-				FDC51F8A1860BA79006B5E77 /* JJParseManager.m in Sources */,
-				FDC51FB61863747C006B5E77 /* JJEmailSignUpViewController.m in Sources */,
-				FD1E238818773C5E0039B562 /* JJConstants.m in Sources */,
+				FDC51F8A1860BA79006B5E77 /* CFXParseManager.m in Sources */,
+				FDC51FB61863747C006B5E77 /* CFXEmailSignUpViewController.m in Sources */,
+				FD1E238818773C5E0039B562 /* CFXConstants.m in Sources */,
 				FD7AA4461873390E00DA1814 /* CBLParseDate.c in Sources */,
-				FDC51FE318661363006B5E77 /* Jog+AdditionalMethods.m in Sources */,
-				FDC51FDC18661302006B5E77 /* User+AdditionalMethods.m in Sources */,
-				FDC51F501860AAA8006B5E77 /* JJAppDelegate.m in Sources */,
+				FDA85FCB18788022007DDEEA /* CFXUser.m in Sources */,
+				FDC51FE318661363006B5E77 /* CFXJog+AdditionalMethods.m in Sources */,
+				FDC51FDC18661302006B5E77 /* CFXUser+AdditionalMethods.m in Sources */,
+				FDC51F501860AAA8006B5E77 /* CFXAppDelegate.m in Sources */,
 				FDC51FA518624FDB006B5E77 /* UIFont+Custom.m in Sources */,
-				FDC51FC61864F6B7006B5E77 /* JJStatisticsViewController.m in Sources */,
+				FDC51FC61864F6B7006B5E77 /* CFXStatisticsViewController.m in Sources */,
 				FDC51FCE1864FD33006B5E77 /* SVProgressHUD.m in Sources */,
 				FDC51F4C1860AAA8006B5E77 /* main.m in Sources */,
 				FD7AA4451873390E00DA1814 /* CBLJSON.m in Sources */,
-				FDC51F8F1860BE6A006B5E77 /* JJCoreDataManager.m in Sources */,
+				FDC51F8F1860BE6A006B5E77 /* CFXCoreDataManager.m in Sources */,
 				FD1E238B187764710039B562 /* JogJournal.xcdatamodeld in Sources */,
-				FDC51F921860C1AA006B5E77 /* JJMainViewController.m in Sources */,
+				FDC51F921860C1AA006B5E77 /* CFXMainViewController.m in Sources */,
 				FDC51FA418624FDB006B5E77 /* UIColor+Custom.m in Sources */,
-				FDC51FB3186344BF006B5E77 /* JJWelcomeViewController.m in Sources */,
-				FDC51FE618661383006B5E77 /* Location+AdditionalMethods.m in Sources */,
-				FDB1A8DB1868C0C9009C9643 /* JJJogTableViewCell.m in Sources */,
-				FDC51FBD1864A545006B5E77 /* JJLocationManager.m in Sources */,
-				FDC51FA9186274C1006B5E77 /* JJButton.m in Sources */,
-				FDC51FB2186344BF006B5E77 /* JJEmailLogInViewController.m in Sources */,
-				FD1E239D187769740039B562 /* User.m in Sources */,
-				FDC51FC31864F63F006B5E77 /* JJCompletedJogsViewController.m in Sources */,
-				FD1E2397187769740039B562 /* Location.m in Sources */,
-				FDC51FC01864DCF0006B5E77 /* JJJogViewController.m in Sources */,
-				FDC51FB918637592006B5E77 /* JJEmailResetPasswordController.m in Sources */,
+				FDC51FB3186344BF006B5E77 /* CFXWelcomeViewController.m in Sources */,
+				FDC51FE618661383006B5E77 /* CFXLocation+AdditionalMethods.m in Sources */,
+				FDB1A8DB1868C0C9009C9643 /* CFXJogTableViewCell.m in Sources */,
+				FDC51FBD1864A545006B5E77 /* CFXLocationManager.m in Sources */,
+				FDC51FA9186274C1006B5E77 /* CFXButton.m in Sources */,
+				FDC51FB2186344BF006B5E77 /* CFXEmailLogInViewController.m in Sources */,
+				FDA85FC818788022007DDEEA /* CFXLocation.m in Sources */,
+				FDC51FC31864F63F006B5E77 /* CFXCompletedJogsViewController.m in Sources */,
+				FDC51FC01864DCF0006B5E77 /* CFXJogViewController.m in Sources */,
+				FDA85FC518788021007DDEEA /* CFXJog.m in Sources */,
+				FDC51FB918637592006B5E77 /* CFXEmailResetPasswordController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
