@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FD1E238818773C5E0039B562 /* CFXConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1E238718773C5E0039B562 /* CFXConstants.m */; };
 		FD1E238B187764710039B562 /* JogJournal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD1E2389187764710039B562 /* JogJournal.xcdatamodeld */; };
-		FD7AA4441873390E00DA1814 /* CBLBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7AA43F1873390E00DA1814 /* CBLBase64.m */; };
 		FD7AA4451873390E00DA1814 /* CBLJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7AA4411873390E00DA1814 /* CBLJSON.m */; };
 		FD7AA4461873390E00DA1814 /* CBLParseDate.c in Sources */ = {isa = PBXBuildFile; fileRef = FD7AA4421873390E00DA1814 /* CBLParseDate.c */; };
 		FD7AA44818733A2B00DA1814 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7AA44718733A2B00DA1814 /* libsqlite3.dylib */; };
@@ -78,8 +77,6 @@
 		FD1E238618773C5E0039B562 /* CFXConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CFXConstants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FD1E238718773C5E0039B562 /* CFXConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CFXConstants.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FD1E238A187764710039B562 /* JogJournal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JogJournal.xcdatamodel; sourceTree = "<group>"; };
-		FD7AA43E1873390E00DA1814 /* CBLBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBLBase64.h; sourceTree = "<group>"; };
-		FD7AA43F1873390E00DA1814 /* CBLBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLBase64.m; sourceTree = "<group>"; };
 		FD7AA4401873390E00DA1814 /* CBLJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBLJSON.h; sourceTree = "<group>"; };
 		FD7AA4411873390E00DA1814 /* CBLJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLJSON.m; sourceTree = "<group>"; };
 		FD7AA4421873390E00DA1814 /* CBLParseDate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CBLParseDate.c; sourceTree = "<group>"; };
@@ -204,8 +201,6 @@
 		FD7AA43D1873390E00DA1814 /* CouchbaseLite */ = {
 			isa = PBXGroup;
 			children = (
-				FD7AA43E1873390E00DA1814 /* CBLBase64.h */,
-				FD7AA43F1873390E00DA1814 /* CBLBase64.m */,
 				FD7AA4401873390E00DA1814 /* CBLJSON.h */,
 				FD7AA4411873390E00DA1814 /* CBLJSON.m */,
 				FD7AA4421873390E00DA1814 /* CBLParseDate.c */,
@@ -262,9 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				FDC51F9F18624FDB006B5E77 /* Categories */,
-				FDC51F8C1860BDDF006B5E77 /* Core Data */,
-				FDC51FBA1864A522006B5E77 /* Core Location */,
-				FDC51F541860AAA8006B5E77 /* Images.xcassets */,
 				FDC51F4E1860AAA8006B5E77 /* CFXAppDelegate.h */,
 				FDC51F4F1860AAA8006B5E77 /* CFXAppDelegate.m */,
 				FDC51FC11864F63F006B5E77 /* CFXCompletedJogsViewController.h */,
@@ -279,6 +271,9 @@
 				FDC51F911860C1AA006B5E77 /* CFXMainViewController.m */,
 				FDC51FC41864F6B7006B5E77 /* CFXStatisticsViewController.h */,
 				FDC51FC51864F6B7006B5E77 /* CFXStatisticsViewController.m */,
+				FDC51F8C1860BDDF006B5E77 /* Core Data */,
+				FDC51FBA1864A522006B5E77 /* Core Location */,
+				FDC51F541860AAA8006B5E77 /* Images.xcassets */,
 				FDC51FAD186343F4006B5E77 /* Log In */,
 				FDC51F8B1860BA83006B5E77 /* Parse */,
 				FDC51FA6186272FD006B5E77 /* Shared UI */,
@@ -527,7 +522,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD7AA4441873390E00DA1814 /* CBLBase64.m in Sources */,
 				FDC51F8A1860BA79006B5E77 /* CFXParseManager.m in Sources */,
 				FDC51FB61863747C006B5E77 /* CFXEmailSignUpViewController.m in Sources */,
 				FD1E238818773C5E0039B562 /* CFXConstants.m in Sources */,

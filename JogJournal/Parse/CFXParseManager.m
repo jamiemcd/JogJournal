@@ -14,37 +14,52 @@
 #import "CFXCoreDataManager.h"
 #import "CBLJSON.h"
 
-#pragma mark - App ID and Client Key
+static NSString *const ParseAppID = @"cji3PMaiHDPCtZpzfbjrL4BWuGO9HtNpJfwrFQ46";
+static NSString *const ParseClientKey = @"h2qH7HoTzpHXTtXWqWVWe4vLDjM1un5tDgviqfoX";
 
-NSString *const CFXParseAppID = @"cji3PMaiHDPCtZpzfbjrL4BWuGO9HtNpJfwrFQ46";
-NSString *const CFXParseClientKey = @"h2qH7HoTzpHXTtXWqWVWe4vLDjM1un5tDgviqfoX";
+// Additional field keys for the PFUser class
+static NSString *const ParseUserFacebookIDKey = @"facebookID";
+static NSString *const ParseUserFacebookNameKey = @"facebookName";
 
-#pragma mark - User Class
-
-// Field keys
-NSString *const CFXUserFacebookIDKey = @"facebookID";
-NSString *const CFXUserFacebookNameKey = @"facebookName";
-
-#pragma mark - Jog Class
-// Class key
-NSString *const CFXJogClassKey = @"Jog";
-
-// Field keys
-NSString *const CFXJogUUIDKey = @"uuid";
-NSString *const CFXJogUserKey = @"user";
-NSString *const CFXJogStartDateKey = @"startDate";
-NSString *const CFXJogEndDateKey = @"endDate";
-NSString *const CFXJogDistanceInMetersKey = @"distanceInMeters";
-NSString *const CFXJogLocationsFileKey = @"locationsFile";
+// Jog Class
+static NSString *const ParseJogClassName = @"Jog";
+static NSString *const ParseJogUUIDKey = @"uuid";
+static NSString *const ParseJogUserKey = @"user";
+static NSString *const ParseJogStartDateKey = @"startDate";
+static NSString *const ParseJogEndDateKey = @"endDate";
+static NSString *const ParseJogDistanceInMetersKey = @"distanceInMeters";
+static NSString *const ParseJogLocationsFileKey = @"locationsFile";
 
 // Keys for locationsFile JSON data
-NSString *const CFXLocationLatitudeKey = @"latitude";
-NSString *const CFXLocationLongitudeKey = @"longitude";
-NSString *const CFXLocationTimestampKey = @"timestamp";
+static NSString *const ParseLocationLatitudeKey = @"latitude";
+static NSString *const ParseLocationLongitudeKey = @"longitude";
+static NSString *const ParseLocationTimestampKey = @"timestamp";
+
+@interface CFXParseManager ()
+
+@end
 
 @implementation CFXParseManager
 
-NSString * const CFXParseManagerUserLogInCompleteNotification = @"com.curiousfind.jogjournal.CFXParseManagerUserLogInCompleteNotification";
+NSString *const CFXParseManagerUserLogInCompleteNotification = @"com.curiousfind.jogjournal.CFXParseManagerUserLogInCompleteNotification";
+
+// User Dictionary keys
+NSString *const CFXParseManagerUserDictionaryFacebookIDKey = @"facebookID";
+NSString *const CFXParseManagerUserDictionaryFacebookNameKey = @"facebookName";
+
+// Jog Dictionary keys
+NSString *const CFXParseManagerJogDictionaryUUIDKey = @"uuid";
+NSString *const CFXParseManagerJogDictionaryParseObjectIDKey = @"parseObjectID";
+NSString *const CFXParseManagerJogDictionaryUserKey = @"user";
+NSString *const CFXParseManagerJogDictionaryStartDateKey = @"startDate";
+NSString *const CFXParseManagerJogDictionaryEndDateKey = @"endDate";
+NSString *const CFXParseManagerJogDictionaryDistanceInMetersKey = @"distanceInMeters";
+NSString *const CFXParseManagerJogDictionaryLocationsKey = @"locations";
+
+// Location Dictionary keys
+NSString *const CFXParseManagerLocationDictionaryLatitudeKey = @"latitude";
+NSString *const CFXParseManagerLocationDictionaryLongitudeKey = @"longitude";
+NSString *const CFXParseManagerLocationDictionaryTimestampKey = @"timestamp";
 
 + (CFXParseManager *)sharedManager
 {
@@ -62,7 +77,7 @@ NSString * const CFXParseManagerUserLogInCompleteNotification = @"com.curiousfin
     self = [super init];
     if (self)
     {
-        [Parse setApplicationId:CFXParseAppID clientKey:CFXParseClientKey];
+        [Parse setApplicationId:ParseAppID clientKey:ParseClientKey];
         [PFFacebookUtils initializeFacebook];
         
         // By default, any newly created PFObjects belongs to the current user (i.e. only the current user can read/write their data)
@@ -92,8 +107,8 @@ NSString * const CFXParseManagerUserLogInCompleteNotification = @"com.curiousfin
                     NSString *facebookID = userData[@"id"];
                     NSString *facebookName = userData[@"name"];
                     //NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
-                    [[PFUser currentUser] setObject:facebookID forKey:CFXUserFacebookIDKey];
-                    [[PFUser currentUser] setObject:facebookName forKey:CFXUserFacebookNameKey];
+                    [[PFUser currentUser] setObject:facebookID forKey:ParseUserFacebookIDKey];
+                    [[PFUser currentUser] setObject:facebookName forKey:ParseUserFacebookNameKey];
                     [[PFUser currentUser] saveInBackground];
                     
                     [[NSNotificationCenter defaultCenter] postNotificationName:CFXParseManagerUserLogInCompleteNotification object:self];
@@ -157,42 +172,47 @@ NSString * const CFXParseManagerUserLogInCompleteNotification = @"com.curiousfin
         return;
     }
     
-    PFQuery *query = [PFQuery queryWithClassName:CFXJogClassKey];
-    [query whereKey:CFXJogUserKey equalTo:[PFUser currentUser]];
+    PFQuery *query = [PFQuery queryWithClassName:ParseJogClassName];
+    [query whereKey:ParseJogUserKey equalTo:[PFUser currentUser]];
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [query findObjectsInBackgroundWithBlock:^(NSArray *jogObjects, NSError *error) {
         // We will build an array of dictionaries. Each dictionary contains all the information about a jog.
-        // We will then execute the callback, passing in the array of dictionaries as an argument. We could
+        // We will then execute the callback, passing the array of dictionaries as an argument. We could
         // just pass in the array of PFObjects, but I like to keep all Parse classes contained within the
         // ParseManager. That way if you ever need to switch BaaS (Backend as a Service) providers, it should be easier.
         NSMutableArray *jogDictionaries = [NSMutableArray array];
-        NSUInteger jogObjectsCount = [objects count];
-        __block NSUInteger jogObjectsLocationDataFetchCount = 0;
-        for (PFObject *jogObject in objects)
+        NSUInteger jogObjectsCount = [jogObjects count];
+        __block NSUInteger jogObjectsLocationDataFetchCompleteCount = 0;
+        for (PFObject *jogObject in jogObjects)
         {
-            PFFile *locationsFile = jogObject[CFXJogLocationsFileKey];
+            // We have the job info from the query, but the jog's location data is stored in a file. We need to get that data and then we can create the jogDictionary.
+            PFFile *locationsFile = jogObject[ParseJogLocationsFileKey];
             [locationsFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                jogObjectsLocationDataFetchCount++;
+                jogObjectsLocationDataFetchCompleteCount++;
                 NSError *jsonError = nil;
+                
+                // First, we get an array of dictionary objects from the JSON. These dictionary objects will have keys ParseLocationLatitudeKey, ParseLocationLongitudeKey, and ParseLocationTimestampKey.
                 NSArray *parseLocationDictionaries = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                
+                // When we execute our callback, we use the keys defined in our public API, which are CFXParseManagerLocationDictionaryLatitudeKey, CFXParseManagerLocationDictionaryLongitudeKey, and CFXParseManagerLocationDictionaryTimestampKey
                 NSMutableArray *locationDictionaries = [NSMutableArray array];
                 for (NSDictionary *parseLocationDictionary in parseLocationDictionaries)
                 {
-                    NSDate *timestamp = [CBLJSON dateWithJSONObject:parseLocationDictionary[@"timestamp"]];
-                    NSDictionary *locationDictionary = @{ @"latitude": parseLocationDictionary[@"latitude"],
-                                                          @"longitude": parseLocationDictionary[@"longitude"],
-                                                          @"timestamp": timestamp };
+                    NSDate *timestamp = [CBLJSON dateWithJSONObject:parseLocationDictionary[ParseLocationTimestampKey]];
+                    NSDictionary *locationDictionary = @{ CFXParseManagerLocationDictionaryLatitudeKey: parseLocationDictionary[ParseLocationLatitudeKey],
+                                                          CFXParseManagerLocationDictionaryLongitudeKey: parseLocationDictionary[ParseLocationLongitudeKey],
+                                                          CFXParseManagerLocationDictionaryTimestampKey: timestamp };
                     [locationDictionaries addObject:locationDictionary];
                 }
-                NSDictionary *jogDictionary = @{ @"parseObjectID": jogObject.objectId,
-                                                 @"uuid": jogObject[CFXJogUUIDKey],
-                                                 @"distanceInMeters": jogObject[CFXJogDistanceInMetersKey],
-                                                 @"startDate": jogObject[CFXJogStartDateKey],
-                                                 @"endDate": jogObject[CFXJogEndDateKey],
-                                                 @"locations": locationDictionaries };
+                NSDictionary *jogDictionary = @{ CFXParseManagerJogDictionaryParseObjectIDKey: jogObject.objectId,
+                                                 CFXParseManagerJogDictionaryUUIDKey: jogObject[ParseJogUUIDKey],
+                                                 CFXParseManagerJogDictionaryDistanceInMetersKey: jogObject[ParseJogDistanceInMetersKey],
+                                                 CFXParseManagerJogDictionaryStartDateKey: jogObject[ParseJogStartDateKey],
+                                                 CFXParseManagerJogDictionaryEndDateKey: jogObject[ParseJogEndDateKey],
+                                                 CFXParseManagerJogDictionaryLocationsKey: locationDictionaries };
                 
                 [jogDictionaries addObject:jogDictionary];
-                if (jogObjectsLocationDataFetchCount == jogObjectsCount)
+                if (jogObjectsLocationDataFetchCompleteCount == jogObjectsCount)
                 {
                     callback(jogDictionaries, error);
                 }
@@ -230,21 +250,21 @@ NSString * const CFXParseManagerUserLogInCompleteNotification = @"com.curiousfin
     for (CFXJog *jog in completedJogsWithNoParseObjectID)
     {
         jogsDictionary[jog.uuid] = jog;
-        PFObject *jogObject = [PFObject objectWithClassName:CFXJogClassKey];
-        jogObject[CFXJogUUIDKey] = jog.uuid;
-        jogObject[CFXJogStartDateKey] = jog.startDate;
-        jogObject[CFXJogEndDateKey] = jog.endDate;
-        jogObject[CFXJogDistanceInMetersKey] = jog.distanceInMeters;
-        jogObject[CFXJogUserKey] = [PFUser currentUser];
+        PFObject *jogObject = [PFObject objectWithClassName:ParseJogClassName];
+        jogObject[ParseJogUUIDKey] = jog.uuid;
+        jogObject[ParseJogStartDateKey] = jog.startDate;
+        jogObject[ParseJogEndDateKey] = jog.endDate;
+        jogObject[ParseJogDistanceInMetersKey] = jog.distanceInMeters;
+        jogObject[ParseJogUserKey] = [PFUser currentUser];
         
         // The jogLocationDictionaries array will contain dictionaries where each dictionary contains the information for a Location
         NSMutableArray *jogLocationDictionaries = [NSMutableArray array];
         for (CFXLocation *location in jog.locations)
         {
             NSMutableDictionary *locationDictionary = [NSMutableDictionary dictionary];
-            locationDictionary[CFXLocationLatitudeKey] = location.latitude;
-            locationDictionary[CFXLocationLongitudeKey] = location.longitude;
-            locationDictionary[CFXLocationTimestampKey] = [CBLJSON JSONObjectWithDate:location.timestamp];
+            locationDictionary[ParseLocationLatitudeKey] = location.latitude;
+            locationDictionary[ParseLocationLongitudeKey] = location.longitude;
+            locationDictionary[ParseLocationTimestampKey] = [CBLJSON JSONObjectWithDate:location.timestamp];
             [jogLocationDictionaries addObject:locationDictionary];
         }
         
@@ -253,16 +273,17 @@ NSString * const CFXParseManagerUserLogInCompleteNotification = @"com.curiousfin
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jogLocationDictionaries options:0 error:&error];
         PFFile *file = [PFFile fileWithName:@"locations.json" data:jsonData];
         
-        jogObject[CFXJogLocationsFileKey] = file;
+        jogObject[ParseJogLocationsFileKey] = file;
         [jogObjects addObject:jogObject];
     }
     
     [PFObject saveAllInBackground:jogObjects block:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
+            // Now that the save is complete, set the parseObjectID on all the CFXJog instances.
             for (PFObject *jogObject in jogObjects)
             {
-                NSString *uuid = jogObject[CFXJogUUIDKey];
+                NSString *uuid = jogObject[ParseJogUUIDKey];
                 CFXJog *jog = jogsDictionary[uuid];
                 jog.parseObjectID = jogObject.objectId;
             }

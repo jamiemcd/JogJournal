@@ -29,8 +29,8 @@
 
 @implementation CFXCoreDataManager
 
-NSString * const CFXCoreDataManagerReadyNotification = @"com.curiousfind.jogjournal.CFXCoreDataManagerReadyNotification";
-NSString * const CFXCoreDataManagerNewLocationAddedToActiveJog = @"com.curiousfind.jogjournal.CFXCoreDataManagerNewLocationAddedToActiveJog";
+NSString *const CFXCoreDataManagerReadyNotification = @"com.curiousfind.jogjournal.CFXCoreDataManagerReadyNotification";
+NSString *const CFXCoreDataManagerNewLocationAddedToActiveJog = @"com.curiousfind.jogjournal.CFXCoreDataManagerNewLocationAddedToActiveJog";
 
 + (CFXCoreDataManager *)sharedManager
 {
@@ -151,26 +151,28 @@ NSString * const CFXCoreDataManagerNewLocationAddedToActiveJog = @"com.curiousfi
     [[CFXParseManager sharedManager] fetchJogsForUser:user withCallback:^(NSArray *jogDictionaries, NSError *error) {
         for (NSDictionary *jogDictionary in jogDictionaries)
         {
-            NSString *uuid = jogDictionary[@"uuid"];
+            NSString *uuid = jogDictionary[CFXParseManagerJogDictionaryUUIDKey];
             if (!userJogsDictionary[uuid])
             {
                 // The jog from Parse does not exist in Core Data, so we need to create it.
-                CFXJog *jog = [NSEntityDescription insertNewObjectForEntityForName:@"Jog" inManagedObjectContext:self.mainManagedObjectContext];
-                jog.uuid = uuid;
-                jog.user = user;
-                jog.parseObjectID = jogDictionary[@"parseObjectID"];
-                jog.startDate = jogDictionary[@"startDate"];
-                jog.endDate = jogDictionary[@"endDate"];
-                jog.distanceInMeters = jogDictionary[@"distanceInMeters"];
-                NSArray *locations = jogDictionary[@"locations"];
-                for (NSDictionary *locationDictionary in locations)
-                {
-                    CFXLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:self.mainManagedObjectContext];
-                    location.latitude = locationDictionary[@"latitude"];
-                    location.longitude = locationDictionary[@"longitude"];
-                    location.timestamp = locationDictionary[@"timestamp"];
-                    location.jog = jog;
-                }
+                [self.mainManagedObjectContext performBlockAndWait:^{
+                    CFXJog *jog = [NSEntityDescription insertNewObjectForEntityForName:@"Jog" inManagedObjectContext:self.mainManagedObjectContext];
+                    jog.uuid = uuid;
+                    jog.user = user;
+                    jog.parseObjectID = jogDictionary[CFXParseManagerJogDictionaryParseObjectIDKey];
+                    jog.startDate = jogDictionary[CFXParseManagerJogDictionaryStartDateKey];
+                    jog.endDate = jogDictionary[CFXParseManagerJogDictionaryEndDateKey];
+                    jog.distanceInMeters = jogDictionary[CFXParseManagerJogDictionaryDistanceInMetersKey];
+                    NSArray *locations = jogDictionary[CFXParseManagerJogDictionaryLocationsKey];
+                    for (NSDictionary *locationDictionary in locations)
+                    {
+                        CFXLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:self.mainManagedObjectContext];
+                        location.latitude = locationDictionary[CFXParseManagerLocationDictionaryLatitudeKey];
+                        location.longitude = locationDictionary[CFXParseManagerLocationDictionaryLongitudeKey];
+                        location.timestamp = locationDictionary[CFXParseManagerLocationDictionaryTimestampKey];
+                        location.jog = jog;
+                    }
+                }];
             }
         }
         [self saveContext:NO];
@@ -208,11 +210,15 @@ NSString * const CFXCoreDataManagerNewLocationAddedToActiveJog = @"com.curiousfi
         if (!user)
         {
             // There is not a Core Data representation of the current Parse user, so we need to create one.
-            user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.mainManagedObjectContext];
-            user.parseObjectID = currentParseUser.objectId;
-            user.email = currentParseUser.email;
-            user.facebookID = currentParseUser[@"facebookID"];
-            user.facebookName = currentParseUser[@"facebookName"];
+            __block CFXUser *newUser;
+            [self.mainManagedObjectContext performBlockAndWait:^{
+                newUser = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.mainManagedObjectContext];
+                newUser.parseObjectID = currentParseUser.objectId;
+                newUser.email = currentParseUser.email;
+                newUser.facebookID = currentParseUser[@"facebookID"];
+                newUser.facebookName = currentParseUser[@"facebookName"];
+            }];
+            user = newUser;
         }
     }
     
@@ -223,11 +229,13 @@ NSString * const CFXCoreDataManagerNewLocationAddedToActiveJog = @"com.curiousfi
 {
     if (!self.activeJog)
     {
-        CFXJog *jog = [NSEntityDescription insertNewObjectForEntityForName:@"Jog" inManagedObjectContext:self.mainManagedObjectContext];
-        jog.uuid = [[NSUUID UUID] UUIDString];
-        jog.user = self.currentUser;
-        jog.startDate = [NSDate date];
-        self.activeJog = jog;
+        [self.mainManagedObjectContext performBlockAndWait:^{
+            CFXJog *jog = [NSEntityDescription insertNewObjectForEntityForName:@"Jog" inManagedObjectContext:self.mainManagedObjectContext];
+            jog.uuid = [[NSUUID UUID] UUIDString];
+            jog.user = self.currentUser;
+            jog.startDate = [NSDate date];
+            self.activeJog = jog;
+        }];
         
         __weak CFXCoreDataManager *weakSelf = self;
         [[CFXLocationManager sharedManager] getContinuousLocationUpdatesWithCallback:^(CLLocation *location, BOOL requiredAccuracyMet, BOOL *stop) {
@@ -275,12 +283,14 @@ NSString * const CFXCoreDataManagerNewLocationAddedToActiveJog = @"com.curiousfi
 
 - (void)addLocationToActiveJog:(CLLocation *)location
 {
-    CFXLocation *jogLocation = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:self.mainManagedObjectContext];
-    jogLocation.latitude = @(location.coordinate.latitude);
-    jogLocation.longitude = @(location.coordinate.longitude);
-    jogLocation.timestamp = location.timestamp;
-    jogLocation.jog = self.activeJog;
-    [[NSNotificationCenter defaultCenter] postNotificationName:CFXCoreDataManagerNewLocationAddedToActiveJog object:self];
+    [self.mainManagedObjectContext performBlockAndWait:^{
+        CFXLocation *jogLocation = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:self.mainManagedObjectContext];
+        jogLocation.latitude = @(location.coordinate.latitude);
+        jogLocation.longitude = @(location.coordinate.longitude);
+        jogLocation.timestamp = location.timestamp;
+        jogLocation.jog = self.activeJog;
+        [[NSNotificationCenter defaultCenter] postNotificationName:CFXCoreDataManagerNewLocationAddedToActiveJog object:self];
+    }];
 }
 
 @end

@@ -11,6 +11,8 @@
 @class CFXUser;
 @class CFXJog;
 
+// Notifications
+
 // Those who observe this notification know it is ok to call methods on the CoreDataManager when this is posted
 extern NSString * const CFXCoreDataManagerReadyNotification;
 
