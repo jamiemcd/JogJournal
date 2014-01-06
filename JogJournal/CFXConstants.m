@@ -10,17 +10,7 @@
 
 @implementation CFXConstants
 
-NSString *const CFXUUIDKey = @"uuid";
-NSString *const CFXUserKey = @"user";
-NSString *const CFXFacebookIDKey = @"facebookID";
-NSString *const CFXFacebookNameKey = @"facebookName";
-NSString *const CFXStartDateKey = @"startDate";
-NSString *const CFXEndDateKey = @"endDate";
-NSString *const CFXDistanceInMetersKey = @"distanceInMeters";
-NSString *const CFXLocationsFileKey = @"locationsFile";
-NSString *const CFXLatitudeKey = @"latitude";
-NSString *const CFXLongitudeKey = @"longitude";
-NSString *const CFXTimestampKey = @"timestamp";
-
+// Define any global constants here
+// NSString *const CFXClassNameNotificationUserInfoDictionarySomeKey = @"someKey";
 
 @end

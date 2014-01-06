@@ -10,19 +10,7 @@
 
 @interface CFXConstants : NSObject
 
-// Dictionary keys
-extern NSString *const CFXUUIDKey;
-extern NSString *const CFXUserKey;
-extern NSString *const CFXFacebookIDKey;
-extern NSString *const CFXFacebookNameKey;
-extern NSString *const CFXStartDateKey;
-extern NSString *const CFXEndDateKey;
-extern NSString *const CFXDistanceInMetersKey;
-extern NSString *const CFXLocationsFileKey;
-extern NSString *const CFXLatitudeKey;
-extern NSString *const CFXLongitudeKey;
-extern NSString *const CFXTimestampKey;
-extern NSString *const CFXIDKey;
-extern NSString *const CFXNameKey;
+// Define any global constants here
+// extern NSString *const CFXClassNameNotificationUserInfoDictionarySomeKey;
 
 @end
