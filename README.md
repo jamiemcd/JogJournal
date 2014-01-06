@@ -31,6 +31,7 @@ Example location data JSON file:
 
 ##iOS Simulator
 Once logged in, the user can start a new jog. The iOS simulator has some location profiles to test with, such as "City Run".
+
 ![](https://raw.github.com/jamiemcd/JogJournal/master/Screenshots/CityRun.png)
 
 ##Screenshots
