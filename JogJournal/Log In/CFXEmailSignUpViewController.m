@@ -58,6 +58,7 @@
     [self.emailTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.emailTextField.placeholder = @"Email";
     self.emailTextField.delegate = self;
+    self.emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
     self.emailTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.emailTextField.spellCheckingType = UITextSpellCheckingTypeNo;
